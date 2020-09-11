@@ -1,13 +1,197 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `ExperimentRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, ExperimentRpc"><title>ckb_rpc::module::ExperimentRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait ExperimentRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.calculate_dao_maximum_withdraw">calculate_dao_maximum_withdraw</a><a href="#tymethod.compute_script_hash">compute_script_hash</a><a href="#tymethod.compute_transaction_hash">compute_transaction_hash</a><a href="#tymethod.dry_run_transaction">dry_run_transaction</a><a href="#tymethod.estimate_fee_rate">estimate_fee_rate</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'ExperimentRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/experiment.rs.html#20-39' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>ExperimentRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait ExperimentRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `ExperimentRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, ExperimentRpc"><title>ckb_rpc::module::ExperimentRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait ExperimentRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.calculate_dao_maximum_withdraw">calculate_dao_maximum_withdraw</a><a href="#tymethod.compute_script_hash">compute_script_hash</a><a href="#tymethod.compute_transaction_hash">compute_transaction_hash</a><a href="#tymethod.dry_run_transaction">dry_run_transaction</a><a href="#tymethod.estimate_fee_rate">estimate_fee_rate</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'ExperimentRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/experiment.rs.html#23-266' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>ExperimentRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait ExperimentRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
     fn <a href='#tymethod.compute_transaction_hash' class='fnname'>compute_transaction_hash</a>(&amp;self, tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.compute_script_hash' class='fnname'>compute_script_hash</a>(&amp;self, script: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Script.html" title="struct ckb_jsonrpc_types::blockchain::Script">Script</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.dry_run_transaction' class='fnname'>dry_run_transaction</a>(&amp;self, _tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.DryRunResult.html" title="struct ckb_jsonrpc_types::experiment::DryRunResult">DryRunResult</a>&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.calculate_dao_maximum_withdraw' class='fnname'>calculate_dao_maximum_withdraw</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Capacity.html" title="type ckb_jsonrpc_types::primitive::Capacity">Capacity</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.dry_run_transaction' class='fnname'>dry_run_transaction</a>(&amp;self, tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.DryRunResult.html" title="struct ckb_jsonrpc_types::experiment::DryRunResult">DryRunResult</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.calculate_dao_maximum_withdraw' class='fnname'>calculate_dao_maximum_withdraw</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Capacity.html" title="type ckb_jsonrpc_types::primitive::Capacity">Capacity</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.estimate_fee_rate' class='fnname'>estimate_fee_rate</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;expect_confirm_blocks: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.EstimateResult.html" title="struct ckb_jsonrpc_types::experiment::EstimateResult">EstimateResult</a>&gt;;
 
     fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt; { ... }
-}</pre></div>
-            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.compute_transaction_hash' class='method'><code id='compute_transaction_hash.v'>fn <a href='#tymethod.compute_transaction_hash' class='fnname'>compute_transaction_hash</a>(&amp;self, tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;</code></h3><h3 id='tymethod.compute_script_hash' class='method'><code id='compute_script_hash.v'>fn <a href='#tymethod.compute_script_hash' class='fnname'>compute_script_hash</a>(&amp;self, script: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Script.html" title="struct ckb_jsonrpc_types::blockchain::Script">Script</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;</code></h3><h3 id='tymethod.dry_run_transaction' class='method'><code id='dry_run_transaction.v'>fn <a href='#tymethod.dry_run_transaction' class='fnname'>dry_run_transaction</a>(&amp;self, _tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.DryRunResult.html" title="struct ckb_jsonrpc_types::experiment::DryRunResult">DryRunResult</a>&gt;</code></h3><h3 id='tymethod.calculate_dao_maximum_withdraw' class='method'><code id='calculate_dao_maximum_withdraw.v'>fn <a href='#tymethod.calculate_dao_maximum_withdraw' class='fnname'>calculate_dao_maximum_withdraw</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Capacity.html" title="type ckb_jsonrpc_types::primitive::Capacity">Capacity</a>&gt;</code></h3><h3 id='tymethod.estimate_fee_rate' class='method'><code id='estimate_fee_rate.v'>fn <a href='#tymethod.estimate_fee_rate' class='fnname'>estimate_fee_rate</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;expect_confirm_blocks: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a><br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.EstimateResult.html" title="struct ckb_jsonrpc_types::experiment::EstimateResult">EstimateResult</a>&gt;</code></h3></div><span class='loading-content'>Loading content...</span>
+}</pre></div><div class='docblock'><p>RPC Module Experiment for experimenting methods.</p>
+<p>Use the methods in this module carefully. They have a high probability to be deprecated later.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.compute_transaction_hash' class='method'><code id='compute_transaction_hash.v'>fn <a href='#tymethod.compute_transaction_hash' class='fnname'>compute_transaction_hash</a>(&amp;self, tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please implement molecule and compute the transaction hash in clients.</p>
+</div></div><div class='docblock'><p>Returns the transaction hash for the given transaction.</p>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;_compute_transaction_hash&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;cell_deps&quot;: [
+        {
+          &quot;dep_type&quot;: &quot;code&quot;,
+          &quot;out_point&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;
+          }
+        }
+      ],
+      &quot;header_deps&quot;: [
+        &quot;0x7978ec7ce5b507cfb52e149e36b1a23f6062ed150503c85bbf825da3599095ed&quot;
+      ],
+      &quot;inputs&quot;: [
+        {
+          &quot;previous_output&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;
+          },
+          &quot;since&quot;: &quot;0x0&quot;
+        }
+      ],
+      &quot;outputs&quot;: [
+        {
+          &quot;capacity&quot;: &quot;0x2540be400&quot;,
+          &quot;lock&quot;: {
+            &quot;args&quot;: &quot;0x&quot;,
+            &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+            &quot;hash_type&quot;: &quot;data&quot;
+          },
+          &quot;type&quot;: null
+        }
+      ],
+      &quot;outputs_data&quot;: [
+        &quot;0x&quot;
+      ],
+      &quot;version&quot;: &quot;0x0&quot;,
+      &quot;witnesses&quot;: []
+    }
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0xa0ef4eb5f4ceeb08a4c8524d84c5da95dce2f608e0ca2ec8091191b0f330c6e3&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.compute_script_hash' class='method'><code id='compute_script_hash.v'>fn <a href='#tymethod.compute_script_hash' class='fnname'>compute_script_hash</a>(&amp;self, script: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Script.html" title="struct ckb_jsonrpc_types::blockchain::Script">Script</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please implement molecule and compute the script hash in clients.</p>
+</div></div><div class='docblock'><p>Returns the script hash for the given script.</p>
+<h2 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;_compute_script_hash&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;args&quot;: &quot;0x&quot;,
+      &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+      &quot;hash_type&quot;: &quot;data&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.dry_run_transaction' class='method'><code id='dry_run_transaction.v'>fn <a href='#tymethod.dry_run_transaction' class='fnname'>dry_run_transaction</a>(&amp;self, tx: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.Transaction.html" title="struct ckb_jsonrpc_types::blockchain::Transaction">Transaction</a>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.DryRunResult.html" title="struct ckb_jsonrpc_types::experiment::DryRunResult">DryRunResult</a>&gt;</code></h3><div class='docblock'><p>Dry run transaction and return the execution cycles.</p>
+<p>This method will not check the transaction validity, but only run the lock script
+and type script and then return the execution cycles.</p>
+<p>It is used to debug transaction scripts and query how many cycles the scripts consume.</p>
+<h2 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;dry_run_transaction&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;cell_deps&quot;: [
+        {
+          &quot;dep_type&quot;: &quot;code&quot;,
+          &quot;out_point&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;
+          }
+        }
+      ],
+      &quot;header_deps&quot;: [
+        &quot;0x7978ec7ce5b507cfb52e149e36b1a23f6062ed150503c85bbf825da3599095ed&quot;
+      ],
+      &quot;inputs&quot;: [
+        {
+          &quot;previous_output&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;
+          },
+          &quot;since&quot;: &quot;0x0&quot;
+        }
+      ],
+      &quot;outputs&quot;: [
+        {
+          &quot;capacity&quot;: &quot;0x2540be400&quot;,
+          &quot;lock&quot;: {
+            &quot;args&quot;: &quot;0x&quot;,
+            &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+            &quot;hash_type&quot;: &quot;data&quot;
+          },
+          &quot;type&quot;: null
+        }
+      ],
+      &quot;outputs_data&quot;: [
+        &quot;0x&quot;
+      ],
+      &quot;version&quot;: &quot;0x0&quot;,
+      &quot;witnesses&quot;: []
+    }
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;cycles&quot;: &quot;0x219&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.calculate_dao_maximum_withdraw' class='method'><code id='calculate_dao_maximum_withdraw.v'>fn <a href='#tymethod.calculate_dao_maximum_withdraw' class='fnname'>calculate_dao_maximum_withdraw</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Capacity.html" title="type ckb_jsonrpc_types::primitive::Capacity">Capacity</a>&gt;</code></h3><div class='docblock'><p>Calculates the maximum withdraw one can get, given a referenced DAO cell, and a withdraw
+block hash.</p>
+<h2 id="params" class="section-header"><a href="#params">Params</a></h2>
+<ul>
+<li><code>out_point</code> - Reference to the DAO cell.</li>
+<li><code>block_hash</code> - The assumed reference block for withdraw. This block must be in the
+<a href="&#x27;trait.ChainRpc.html#canonical-chain&#x27;">canonical chain</a>.</li>
+</ul>
+<h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
+<p>The RPC returns the final capacity when the cell <code>out_point</code> is withdrawn using the block
+<code>block_hash</code> as the reference.</p>
+<p>In CKB, scripts cannot get the information about in which block the transaction is
+committed. A workaround is letting the transaction reference a block hash so the script
+knows that the transaction is committed at least after the reference block.</p>
+<h2 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;calculate_dao_maximum_withdraw&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;index&quot;: &quot;0x0&quot;,
+      &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;
+    },
+    &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x4a8b4e8a4&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.estimate_fee_rate' class='method'><code id='estimate_fee_rate.v'>fn <a href='#tymethod.estimate_fee_rate' class='fnname'>estimate_fee_rate</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;expect_confirm_blocks: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a><br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/experiment/struct.EstimateResult.html" title="struct ckb_jsonrpc_types::experiment::EstimateResult">EstimateResult</a>&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.34.0: <p>This method is deprecated because of the performance issue. It always returns an error now.</p>
+</div></div><div class='docblock'><p>Estimates a fee rate (capacity/KB) for a transaction that to be committed within the expect number of blocks.</p>
+</div></div><span class='loading-content'>Loading content...</span>
             <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt;</code></h3><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
 </div></div><span class='loading-content'>Loading content...</span>
             <h2 id='implementors' class='small-section-header'>Implementors<a href='#implementors' class='anchor'></a></h2><div class='item-list' id='implementors-list'></div><span class='loading-content'>Loading content...</span><script type="text/javascript" src="../../implementors/ckb_rpc/module/trait.ExperimentRpc.js" async></script></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_rpc";</script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
