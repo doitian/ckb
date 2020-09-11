@@ -70,6 +70,9 @@
 <span id="70">70</span>
 <span id="71">71</span>
 <span id="72">72</span>
+<span id="73">73</span>
+<span id="74">74</span>
+<span id="75">75</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">ckb_jsonrpc_types</span>::{<span class="ident">ExtraLoggerConfig</span>, <span class="ident">MainLoggerConfig</span>};
 <span class="kw">use</span> <span class="ident">ckb_logger_service</span>::<span class="ident">Logger</span>;
@@ -77,6 +80,9 @@
 <span class="kw">use</span> <span class="ident">jsonrpc_derive</span>::<span class="ident">rpc</span>;
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">time</span>;
 
+<span class="doccomment">/// RPC Module Debug</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// **This module is for CKB developers and will not guarantee compatibility.**</span>
 <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">server</span>)]</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">DebugRpc</span> {
     <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;jemalloc_profiling_dump&quot;</span>)]</span>

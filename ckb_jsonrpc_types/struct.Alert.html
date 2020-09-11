@@ -7,7 +7,7 @@
     pub notice_until: <a class="type" href="../ckb_jsonrpc_types/type.Timestamp.html" title="type ckb_jsonrpc_types::Timestamp">Timestamp</a>,
     pub message: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>,
     pub signatures: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../ckb_jsonrpc_types/struct.JsonBytes.html" title="struct ckb_jsonrpc_types::JsonBytes">JsonBytes</a>&gt;,
-}</pre></div><div class='docblock'><p>An alert is a message about critcal problems to be broadcasted to all nodes via the p2p network.</p>
+}</pre></div><div class='docblock'><p>An alert is a message about critical problems to be broadcast to all nodes via the p2p network.</p>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
 <p>An example in JSON</p>
 <pre><code class="language-json">{
@@ -25,7 +25,7 @@
 }
 </code></pre>
 </div><h2 id='fields' class='fields small-section-header'>
-                       Fields<a href='#fields' class='anchor'></a></h2><span id="structfield.id" class="structfield small-section-header"><a href="#structfield.id" class="anchor field"></a><code id="id.v">id: <a class="type" href="../ckb_jsonrpc_types/type.AlertId.html" title="type ckb_jsonrpc_types::AlertId">AlertId</a></code></span><div class='docblock'><p>The identifier of the alert. Clients use id to deduplicate alerts.</p>
+                       Fields<a href='#fields' class='anchor'></a></h2><span id="structfield.id" class="structfield small-section-header"><a href="#structfield.id" class="anchor field"></a><code id="id.v">id: <a class="type" href="../ckb_jsonrpc_types/type.AlertId.html" title="type ckb_jsonrpc_types::AlertId">AlertId</a></code></span><div class='docblock'><p>The identifier of the alert. Clients use id to filter duplicated alerts.</p>
 </div><span id="structfield.cancel" class="structfield small-section-header"><a href="#structfield.cancel" class="anchor field"></a><code id="cancel.v">cancel: <a class="type" href="../ckb_jsonrpc_types/type.AlertId.html" title="type ckb_jsonrpc_types::AlertId">AlertId</a></code></span><div class='docblock'><p>Cancel a previous sent alert.</p>
 </div><span id="structfield.min_version" class="structfield small-section-header"><a href="#structfield.min_version" class="anchor field"></a><code id="min_version.v">min_version: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;</code></span><div class='docblock'><p>Optionally set the minimal version of the target clients.</p>
 <p>See <a href="https://semver.org/">Semantic Version</a> about how to specify a version.</p>

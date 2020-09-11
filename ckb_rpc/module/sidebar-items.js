@@ -1,1 +1,1 @@
-initSidebarItems({"trait":[["AlertRpc","RPC Module Alert"],["ChainRpc","RPC Module Chain"],["DebugRpc",""],["ExperimentRpc",""],["IndexerRpc",""],["IntegrationTestRpc",""],["MinerRpc",""],["NetworkRpc",""],["PoolRpc",""],["StatsRpc",""],["SubscriptionRpc",""]]});
+initSidebarItems({"trait":[["AlertRpc","RPC Module Alert"],["ChainRpc","RPC Module Chain"],["DebugRpc","RPC Module Debug"],["ExperimentRpc",""],["IndexerRpc",""],["IntegrationTestRpc",""],["MinerRpc",""],["NetworkRpc",""],["PoolRpc",""],["StatsRpc",""],["SubscriptionRpc",""]]});

@@ -16,9 +16,9 @@
 
     fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt; { ... }
 }</pre></div><div class='docblock'><p>RPC Module Chain</p>
-<p>This module quries informations about the canonical chain.</p>
+<p>This module queries information about the canonical chain.</p>
 <h2 id="canonical-chain" class="section-header"><a href="#canonical-chain">Canonical Chain</a></h2>
-<p>A canonical chain is the one with the most accumulated work. The accmumulated work is
+<p>A canonical chain is the one with the most accumulated work. The accumulated work is
 the sum of difficulties of all the blocks in the chain.</p>
 <h2 id="chain-reorganization" class="section-header"><a href="#chain-reorganization">Chain Reorganization</a></h2>
 <p>Chain Reorganization happens when CKB found a chain which has accumulated more work than the
@@ -36,7 +36,7 @@ and</li>
 <h2 id="params" class="section-header"><a href="#params">Params</a></h2>
 <ul>
 <li><code>block_hash</code> - the block hash.</li>
-<li><code>verbosity</code> - reslut format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
+<li><code>verbosity</code> - result format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
 </ul>
 <h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
 <p>The RPC returns a block or null. When the RPC returns a block, the block hash must equal to
@@ -51,7 +51,7 @@ schema.</p>
 <p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
 encodes the block serialized by molecule using schema <code>table Block</code>.</p>
 <h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
-<p>Resquest</p>
+<p>Request</p>
 <pre><code class="language-json">{
   &quot;id&quot;: 42,
   &quot;jsonrpc&quot;: &quot;2.0&quot;,
@@ -130,7 +130,7 @@ encodes the block serialized by molecule using schema <code>table Block</code>.<
 <h2 id="params-1" class="section-header"><a href="#params-1">Params</a></h2>
 <ul>
 <li><code>block_number</code> - the block number.</li>
-<li><code>verbosity</code> - reslut format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
+<li><code>verbosity</code> - result format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
 </ul>
 <h2 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h2>
 <p>The RPC returns the block when <code>block_number</code> is less than or equal to the tip block
@@ -222,7 +222,7 @@ encodes the block serialized by molecule using schema <code>table Block</code>.<
 <h2 id="params-2" class="section-header"><a href="#params-2">Params</a></h2>
 <ul>
 <li><code>block_hash</code> - the block hash.</li>
-<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+<li><code>verbosity</code> - result format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
 </ul>
 <h2 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h2>
 <p>The RPC returns a header or null. When the RPC returns a header, the block hash must equal to
@@ -279,7 +279,7 @@ number.</p>
 <h2 id="params-3" class="section-header"><a href="#params-3">Params</a></h2>
 <ul>
 <li><code>block_number</code> - Number of a block</li>
-<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+<li><code>verbosity</code> - result format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
 </ul>
 <h2 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h2>
 <p>The RPC returns the block header when <code>block_number</code> is less than or equal to the tip block
@@ -437,7 +437,7 @@ less than previous invocations and different invocations may return different bl
 with the same block number.</p>
 <h2 id="params-6" class="section-header"><a href="#params-6">Params</a></h2>
 <ul>
-<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+<li><code>verbosity</code> - result format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
 </ul>
 <h2 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h2>
 <p>When <code>verbosity</code> is 1, the RPC returns a JSON object as the <code>result</code>. See HeaderView for the
@@ -569,7 +569,7 @@ solution</p>
   ]
 }
 </code></pre>
-</div><h3 id='tymethod.get_live_cell' class='method'><code id='get_live_cell.v'>fn <a href='#tymethod.get_live_cell' class='fnname'>get_live_cell</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;with_data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellWithStatus.html" title="struct ckb_jsonrpc_types::cell::CellWithStatus">CellWithStatus</a>&gt;</code></h3><div class='docblock'><p>Returns the status about a cell. The RPC returns extra informations if it is a [live cell]
+</div><h3 id='tymethod.get_live_cell' class='method'><code id='get_live_cell.v'>fn <a href='#tymethod.get_live_cell' class='fnname'>get_live_cell</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;with_data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellWithStatus.html" title="struct ckb_jsonrpc_types::cell::CellWithStatus">CellWithStatus</a>&gt;</code></h3><div class='docblock'><p>Returns the status about a cell. The RPC returns extra information if it is a [live cell]
 (#live-cell).</p>
 <h2 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h2>
 <p>This RPC tells whether a cell is live or not.</p>
@@ -643,7 +643,7 @@ less than a value returned in the previous invocation.</p>
 </code></pre>
 </div><h3 id='tymethod.get_current_epoch' class='method'><code id='get_current_epoch.v'>fn <a href='#tymethod.get_current_epoch' class='fnname'>get_current_epoch</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.EpochView.html" title="struct ckb_jsonrpc_types::blockchain::EpochView">EpochView</a>&gt;</code></h3><div class='docblock'><p>Returns the epoch with the highest number in the <a href="#canonical-chain">canonical chain</a>.</p>
 <p>Pay attention that like blocks with the specific block number may change because of <a href="#chain-reorganization">chain
-reorganization</a>, This RPC may return different epoches which have
+reorganization</a>, This RPC may return different epochs which have
 the same epoch number.</p>
 <h2 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h2>
 <p>Request</p>
@@ -675,7 +675,7 @@ the same epoch number.</p>
 <p>The RPC returns the epoch when <code>epoch_number</code> is less than or equal to the current epoch number
 returned by <a href="#tymethod.get_current_epoch"><code>get_current_epoch</code></a> and returns null otherwise.</p>
 <p>Because of <a href="#chain-reorganization">chain reorganization</a>, for the same <code>epoch_number</code>, this
-RPC may return null or different epoches in different invocations.</p>
+RPC may return null or different epochs in different invocations.</p>
 <h2 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h2>
 <p>Request</p>
 <pre><code class="language-json">{

@@ -132,7 +132,7 @@
 <span class="kw">use</span> <span class="ident">ckb_types</span>::{<span class="ident">packed</span>, <span class="ident">prelude</span>::<span class="kw-2">*</span>};
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
-<span class="doccomment">/// Alert identifier is used to dedupliate alerts.</span>
+<span class="doccomment">/// Alert identifier is used to filter duplicated alerts.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// This is a 32-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint32](type.Uint32.html#examples).</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AlertId</span> <span class="op">=</span> <span class="ident">Uint32</span>;
@@ -141,7 +141,7 @@
 <span class="doccomment">/// This is a 32-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint32](type.Uint32.html#examples).</span>
 <span class="kw">pub</span> <span class="kw">type</span> <span class="ident">AlertPriority</span> <span class="op">=</span> <span class="ident">Uint32</span>;
 
-<span class="doccomment">/// An alert is a message about critcal problems to be broadcasted to all nodes via the p2p network.</span>
+<span class="doccomment">/// An alert is a message about critical problems to be broadcast to all nodes via the p2p network.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
@@ -164,7 +164,7 @@
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Alert</span> {
-    <span class="doccomment">/// The identifier of the alert. Clients use id to deduplicate alerts.</span>
+    <span class="doccomment">/// The identifier of the alert. Clients use id to filter duplicated alerts.</span>
     <span class="kw">pub</span> <span class="ident">id</span>: <span class="ident">AlertId</span>,
     <span class="doccomment">/// Cancel a previous sent alert.</span>
     <span class="kw">pub</span> <span class="ident">cancel</span>: <span class="ident">AlertId</span>,

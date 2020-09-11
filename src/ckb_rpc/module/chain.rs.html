@@ -1444,11 +1444,11 @@
 
 <span class="doccomment">/// RPC Module Chain</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// This module quries informations about the canonical chain.</span>
+<span class="doccomment">/// This module queries information about the canonical chain.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Canonical Chain</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// A canonical chain is the one with the most accumulated work. The accmumulated work is</span>
+<span class="doccomment">/// A canonical chain is the one with the most accumulated work. The accumulated work is</span>
 <span class="doccomment">/// the sum of difficulties of all the blocks in the chain.</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Chain Reorganization</span>
@@ -1471,7 +1471,7 @@
     <span class="doccomment">/// ## Params</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// * `block_hash` - the block hash.</span>
-    <span class="doccomment">/// * `verbosity` - reslut format which allows 0 and 2. (**Optional**, the default is 2.)</span>
+    <span class="doccomment">/// * `verbosity` - result format which allows 0 and 2. (**Optional**, the default is 2.)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
     <span class="doccomment">///</span>
@@ -1492,7 +1492,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Resquest</span>
+    <span class="doccomment">/// Request</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ```json</span>
     <span class="doccomment">/// {</span>
@@ -1587,7 +1587,7 @@
     <span class="doccomment">/// ## Params</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// * `block_number` - the block number.</span>
-    <span class="doccomment">/// * `verbosity` - reslut format which allows 0 and 2. (**Optional**, the default is 2.)</span>
+    <span class="doccomment">/// * `verbosity` - result format which allows 0 and 2. (**Optional**, the default is 2.)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
     <span class="doccomment">///</span>
@@ -1701,7 +1701,7 @@
     <span class="doccomment">/// ## Params</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// * `block_hash` - the block hash.</span>
-    <span class="doccomment">/// * `verbosity` - reslut format which allows 0 and 1. (**Optional**, the default is 1.)</span>
+    <span class="doccomment">/// * `verbosity` - result format which allows 0 and 1. (**Optional**, the default is 1.)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
     <span class="doccomment">///</span>
@@ -1780,7 +1780,7 @@
     <span class="doccomment">/// ## Params</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// * `block_number` - Number of a block</span>
-    <span class="doccomment">/// * `verbosity` - reslut format which allows 0 and 1. (**Optional**, the default is 1.)</span>
+    <span class="doccomment">/// * `verbosity` - result format which allows 0 and 1. (**Optional**, the default is 1.)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
     <span class="doccomment">///</span>
@@ -1987,7 +1987,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Params</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// * `verbosity` - reslut format which allows 0 and 1. (**Optional**, the default is 1.)</span>
+    <span class="doccomment">/// * `verbosity` - result format which allows 0 and 1. (**Optional**, the default is 1.)</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
     <span class="doccomment">///</span>
@@ -2153,7 +2153,7 @@
         <span class="ident">to</span>: <span class="ident">BlockNumber</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">CellOutputWithOutPoint</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
-    <span class="doccomment">/// Returns the status about a cell. The RPC returns extra informations if it is a [live cell]</span>
+    <span class="doccomment">/// Returns the status about a cell. The RPC returns extra information if it is a [live cell]</span>
     <span class="doccomment">/// (#live-cell).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Returns</span>
@@ -2253,7 +2253,7 @@
     <span class="doccomment">/// Returns the epoch with the highest number in the [canonical chain](#canonical-chain).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Pay attention that like blocks with the specific block number may change because of [chain</span>
-    <span class="doccomment">/// reorganization](#chain-reorganization), This RPC may return different epoches which have</span>
+    <span class="doccomment">/// reorganization](#chain-reorganization), This RPC may return different epochs which have</span>
     <span class="doccomment">/// the same epoch number.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
@@ -2298,7 +2298,7 @@
     <span class="doccomment">/// returned by [`get_current_epoch`](#tymethod.get_current_epoch) and returns null otherwise.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Because of [chain reorganization](#chain-reorganization), for the same `epoch_number`, this</span>
-    <span class="doccomment">/// RPC may return null or different epoches in different invocations.</span>
+    <span class="doccomment">/// RPC may return null or different epochs in different invocations.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>
@@ -2476,7 +2476,7 @@
         <span class="kw">let</span> <span class="ident">verbosity</span> <span class="op">=</span> <span class="ident">verbosity</span>
             .<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">value</span>())
             .<span class="ident">unwrap_or</span>(<span class="ident">DEFAULT_BLOCK_VERBOSITY_LEVEL</span>);
-        <span class="comment">// TODO: verbosity level == 1, output block only contains tx_hash in json format</span>
+        <span class="comment">// TODO: verbosity level == 1, output block only contains tx_hash in JSON format</span>
         <span class="kw">if</span> <span class="ident">verbosity</span> <span class="op">=</span><span class="op">=</span> <span class="number">2</span> {
             <span class="prelude-val">Ok</span>(<span class="ident">snapshot</span>
                 .<span class="ident">get_block</span>(<span class="kw-2">&amp;</span><span class="ident">block_hash</span>)

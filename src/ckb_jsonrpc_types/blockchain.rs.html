@@ -1549,7 +1549,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// The block must already be in the canonical chain.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// Lock script and type script can reads the header informations of blocks listed here.</span>
+    <span class="doccomment">/// Lock script and type script can reads the header information of blocks listed here.</span>
     <span class="kw">pub</span> <span class="ident">header_deps</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">H256</span><span class="op">&gt;</span>,
     <span class="doccomment">/// An array of input cells.</span>
     <span class="doccomment">///</span>
@@ -1774,17 +1774,17 @@
     <span class="kw">pub</span> <span class="ident">version</span>: <span class="ident">Version</span>,
     <span class="doccomment">/// The block difficulty target.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// It can be converted to a 256-bit target. Miner must ensure the Eaglsong of the header is</span>
+    <span class="doccomment">/// It can be converted to a 256-bit target. Miner must ensure the Eaglesong of the header is</span>
     <span class="doccomment">/// within the target.</span>
     <span class="kw">pub</span> <span class="ident">compact_target</span>: <span class="ident">Uint32</span>,
     <span class="doccomment">/// The block timestamp.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// It is a unix timestamp in milliseconds (1 second = 1000 milliseconds).</span>
+    <span class="doccomment">/// It is a Unix timestamp in milliseconds (1 second = 1000 milliseconds).</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Miners should put the time when the block is created in the header, however, the precision</span>
-    <span class="doccomment">/// is not guranteened. A block with higher block number may even have a smaller timestamp.</span>
+    <span class="doccomment">/// is not guaranteed. A block with higher block number may even have a smaller timestamp.</span>
     <span class="kw">pub</span> <span class="ident">timestamp</span>: <span class="ident">Timestamp</span>,
-    <span class="doccomment">/// The consecuritive block number starting from 0.</span>
+    <span class="doccomment">/// The consecutive block number starting from 0.</span>
     <span class="kw">pub</span> <span class="ident">number</span>: <span class="ident">BlockNumber</span>,
     <span class="doccomment">/// The epoch information of this block.</span>
     <span class="doccomment">///</span>
@@ -1811,7 +1811,7 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// See RFC [Deposit and Withdraw in Nervos DAO](https://github.com/nervosnetwork/rfcs/blob/master/rfcs/0023-dao-deposit-withdraw/0023-dao-deposit-withdraw.md#calculation).</span>
     <span class="kw">pub</span> <span class="ident">dao</span>: <span class="ident">Byte32</span>,
-    <span class="doccomment">/// Miner can modify this field to find a proper value such that the Eaglsong of the header is</span>
+    <span class="doccomment">/// Miner can modify this field to find a proper value such that the Eaglesong of the header is</span>
     <span class="doccomment">/// within the target encoded from `compact_target`.</span>
     <span class="kw">pub</span> <span class="ident">nonce</span>: <span class="ident">Uint128</span>,
 }
@@ -2117,7 +2117,7 @@
     <span class="kw">pub</span> <span class="ident">number</span>: <span class="ident">EpochNumber</span>,
     <span class="doccomment">/// The block number of the first block in the epoch.</span>
     <span class="doccomment">///</span>
-    <span class="doccomment">/// It also equals to the total count of blocks in the all the epoches which epoch number is</span>
+    <span class="doccomment">/// It also equals to the total count of blocks in the all the epochs which epoch number is</span>
     <span class="doccomment">/// less than this epoch.</span>
     <span class="kw">pub</span> <span class="ident">start_number</span>: <span class="ident">BlockNumber</span>,
     <span class="kw">pub</span> <span class="ident">length</span>: <span class="ident">BlockNumber</span>,
