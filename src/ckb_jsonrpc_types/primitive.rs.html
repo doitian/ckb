@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source to the Rust file `util/jsonrpc-types/src/primitive.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>primitive.rs.html -- source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_jsonrpc_types/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><pre class="line-numbers"><span id="1"> 1</span>
+<span id="2"> 2</span>
+<span id="3"> 3</span>
+<span id="4"> 4</span>
+<span id="5"> 5</span>
+<span id="6"> 6</span>
+<span id="7"> 7</span>
+<span id="8"> 8</span>
+<span id="9"> 9</span>
+<span id="10">10</span>
+<span id="11">11</span>
+<span id="12">12</span>
+<span id="13">13</span>
+<span id="14">14</span>
+<span id="15">15</span>
+<span id="16">16</span>
+<span id="17">17</span>
+<span id="18">18</span>
+<span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
+<span id="34">34</span>
+<span id="35">35</span>
+<span id="36">36</span>
+<span id="37">37</span>
+<span id="38">38</span>
+<span id="39">39</span>
+<span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+</pre><div class="example-wrap"><pre class="rust ">
+<span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Uint32</span>, <span class="ident">Uint64</span>};
+
+<span class="doccomment">/// Consecutive block number starting from 0.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">BlockNumber</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// Consecutive epoch number starting from 0.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">EpochNumber</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// The epoch indicator of a block. It shows which epoch the block is in, and elspased epoch fraction after adding this block.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The lower 56 bits of the epoch field are split into 3 parts (listed in the order from higher bits to lower bits):</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// * The highest 16 bits represent the epoch length</span>
+<span class="doccomment">/// * The next 16 bits represent the current block index in the epoch, starting from 0.</span>
+<span class="doccomment">/// * The lowest 24 bits represent the current epoch number.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Assume there&#39;s a block, which number is 11555 and in epoch 50. The epoch 50 starts from block</span>
+<span class="doccomment">/// 11000 and have 1000 blocks. The epoch field for this particular block will then be 1,099,520,939,130,930,</span>
+<span class="doccomment">/// which is calculated in the following way:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// ```text</span>
+<span class="doccomment">/// 50 | ((11555 - 11000) &lt;&lt; 24) | (1000 &lt;&lt; 40)</span>
+<span class="doccomment">/// ```</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">EpochNumberWithFraction</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// The capacity of a cell is the value of the cell in Shannons. It is also the upper limit of the cell occupied storage size where every 100,000,000 Shannons give 1 byte storage.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Capacity</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// Count of cycles consumed by CKB VM to run scripts.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Cycle</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// The fee rate is the ratio between fee and transaction weight in unit Shannon per 1,000 bytes.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Based on the context, the weight is either the transaction virtual bytes or serialization size in block.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">FeeRate</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// The Unix timestamp in milliseconds (1 second is 1000 milliseconds).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// For example, 1588233578000 is Thu, 30 Apr 2020 07:59:38 +0000</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 64-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint64](type.Uint64.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Timestamp</span> <span class="op">=</span> <span class="ident">Uint64</span>;
+<span class="doccomment">/// The simple increasing integer version.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// This is a 32-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON. See examples of [Uint32](type.Uint32.html#examples).</span>
+<span class="kw">pub</span> <span class="kw">type</span> <span class="ident">Version</span> <span class="op">=</span> <span class="ident">Uint32</span>;
+</pre></div>
+</section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_jsonrpc_types";</script><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script><script defer src="../../search-index.js"></script></body></html>

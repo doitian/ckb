@@ -1,0 +1,3 @@
+(function() {var implementors = {};
+implementors["ckb_types"] = [{"text":"impl Merge for <a class=\"struct\" href=\"ckb_types/utilities/struct.MergeByte32.html\" title=\"struct ckb_types::utilities::MergeByte32\">MergeByte32</a>","synthetic":false,"types":["ckb_types::utilities::merkle_tree::MergeByte32"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

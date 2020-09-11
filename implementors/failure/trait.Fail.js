@@ -1,0 +1,4 @@
+(function() {var implementors = {};
+implementors["ckb_fixed_hash_core"] = [{"text":"impl Fail for <a class=\"enum\" href=\"ckb_fixed_hash_core/error/enum.FromStrError.html\" title=\"enum ckb_fixed_hash_core::error::FromStrError\">FromStrError</a>","synthetic":false,"types":["ckb_fixed_hash_core::error::FromStrError"]},{"text":"impl Fail for <a class=\"enum\" href=\"ckb_fixed_hash_core/error/enum.FromSliceError.html\" title=\"enum ckb_fixed_hash_core::error::FromSliceError\">FromSliceError</a>","synthetic":false,"types":["ckb_fixed_hash_core::error::FromSliceError"]}];
+implementors["ckb_types"] = [{"text":"impl Fail for <a class=\"enum\" href=\"ckb_types/core/error/enum.OutPointError.html\" title=\"enum ckb_types::core::error::OutPointError\">OutPointError</a>","synthetic":false,"types":["ckb_types::core::error::OutPointError"]}];
+if (window.register_implementors) {window.register_implementors(implementors);} else {window.pending_implementors = implementors;}})()

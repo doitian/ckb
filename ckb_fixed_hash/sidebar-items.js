@@ -1,0 +1,1 @@
+initSidebarItems({"macro":[["h160",""],["h256",""],["h512",""],["h520",""]],"mod":[["error",""]],"struct":[["H160","The 20-byte fixed length binary data."],["H256","The 32-byte fixed length binary data."],["H512","The 64-byte fixed length binary data."],["H520","The 65-byte fixed length binary data."]]});

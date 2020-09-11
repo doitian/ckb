@@ -1,0 +1,793 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `ChainRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, ChainRpc"><title>ckb_rpc::module::ChainRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait ChainRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.get_block">get_block</a><a href="#tymethod.get_block_by_number">get_block_by_number</a><a href="#tymethod.get_block_economic_state">get_block_economic_state</a><a href="#tymethod.get_block_hash">get_block_hash</a><a href="#tymethod.get_cellbase_output_capacity_details">get_cellbase_output_capacity_details</a><a href="#tymethod.get_cells_by_lock_hash">get_cells_by_lock_hash</a><a href="#tymethod.get_current_epoch">get_current_epoch</a><a href="#tymethod.get_epoch_by_number">get_epoch_by_number</a><a href="#tymethod.get_header">get_header</a><a href="#tymethod.get_header_by_number">get_header_by_number</a><a href="#tymethod.get_live_cell">get_live_cell</a><a href="#tymethod.get_tip_block_number">get_tip_block_number</a><a href="#tymethod.get_tip_header">get_tip_header</a><a href="#tymethod.get_transaction">get_transaction</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'ChainRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/chain.rs.html#45-1032' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>ChainRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait ChainRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
+    fn <a href='#tymethod.get_block' class='fnname'>get_block</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockView.html" title="struct ckb_jsonrpc_types::blockchain::BlockView">BlockView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Block.html" title="struct ckb_types::generated::blockchain::Block">Block</a>&gt;&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_block_by_number' class='fnname'>get_block_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockView.html" title="struct ckb_jsonrpc_types::blockchain::BlockView">BlockView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Block.html" title="struct ckb_types::generated::blockchain::Block">Block</a>&gt;&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_header' class='fnname'>get_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_header_by_number' class='fnname'>get_header_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_transaction' class='fnname'>get_transaction</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tx_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.TransactionWithStatus.html" title="struct ckb_jsonrpc_types::blockchain::TransactionWithStatus">TransactionWithStatus</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_block_hash' class='fnname'>get_block_hash</a>(&amp;self, block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_tip_header' class='fnname'>get_tip_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_cells_by_lock_hash' class='fnname'>get_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;from: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellOutputWithOutPoint.html" title="struct ckb_jsonrpc_types::cell::CellOutputWithOutPoint">CellOutputWithOutPoint</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_live_cell' class='fnname'>get_live_cell</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;with_data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellWithStatus.html" title="struct ckb_jsonrpc_types::cell::CellWithStatus">CellWithStatus</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_tip_block_number' class='fnname'>get_tip_block_number</a>(&amp;self) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_current_epoch' class='fnname'>get_current_epoch</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.EpochView.html" title="struct ckb_jsonrpc_types::blockchain::EpochView">EpochView</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_epoch_by_number' class='fnname'>get_epoch_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;epoch_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.EpochNumber.html" title="type ckb_jsonrpc_types::primitive::EpochNumber">EpochNumber</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.EpochView.html" title="struct ckb_jsonrpc_types::blockchain::EpochView">EpochView</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_cellbase_output_capacity_details' class='fnname'>get_cellbase_output_capacity_details</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockReward.html" title="struct ckb_jsonrpc_types::blockchain::BlockReward">BlockReward</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_block_economic_state' class='fnname'>get_block_economic_state</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockEconomicState.html" title="struct ckb_jsonrpc_types::blockchain::BlockEconomicState">BlockEconomicState</a>&gt;&gt;;
+
+    fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt; { ... }
+}</pre></div><div class='docblock'><p>RPC Module Chain</p>
+<p>This module quries informations about the canonical chain.</p>
+<h2 id="canonical-chain" class="section-header"><a href="#canonical-chain">Canonical Chain</a></h2>
+<p>A canonical chain is the one with the most accumulated work. The accmumulated work is
+the sum of difficulties of all the blocks in the chain.</p>
+<h2 id="chain-reorganization" class="section-header"><a href="#chain-reorganization">Chain Reorganization</a></h2>
+<p>Chain Reorganization happens when CKB found a chain which has accumulated more work than the
+canonical chain. The reorganization reverts the blocks in the current canonical chain if needed,
+and switch the canonical chain to that better chain.</p>
+<h2 id="live-cell" class="section-header"><a href="#live-cell">Live Cell</a></h2>
+<p>A cell is live if</p>
+<ul>
+<li>it is found as an output in any transaction in the <a href="#canonical-chain">canonical chain</a>,
+and</li>
+<li>it is not found as an input in any transaction in the canonical chain.</li>
+</ul>
+</div>
+            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.get_block' class='method'><code id='get_block.v'>fn <a href='#tymethod.get_block' class='fnname'>get_block</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockView.html" title="struct ckb_jsonrpc_types::blockchain::BlockView">BlockView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Block.html" title="struct ckb_types::generated::blockchain::Block">Block</a>&gt;&gt;&gt;</code></h3><div class='docblock'><p>Returns the information about a block by hash.</p>
+<h2 id="params" class="section-header"><a href="#params">Params</a></h2>
+<ul>
+<li><code>block_hash</code> - the block hash.</li>
+<li><code>verbosity</code> - reslut format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
+</ul>
+<h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
+<p>The RPC returns a block or null. When the RPC returns a block, the block hash must equal to
+the parameter <code>block_hash</code>.</p>
+<p>If the block is in the <a href="#canonical-chain">canonical chain</a>, the RPC must return the block
+information. Otherwise the behavior is undefined. The RPC may return blocks found in local
+storage, or simply returns null for all blocks that are not in the canonical chain. And
+because of <a href="#chain-reorganization">chain reorganization</a>, for the same <code>block_hash</code>, the
+RPC may sometimes return null and sometimes return the block.</p>
+<p>When <code>verbosity</code> is 2, it returns a JSON object as the <code>result</code>. See <code>BlockView</code> for the
+schema.</p>
+<p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
+encodes the block serialized by molecule using schema <code>table Block</code>.</p>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<p>Resquest</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_block&quot;,
+  &quot;params&quot;: [
+    &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;header&quot;: {
+      &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+      &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+      &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+      &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+      &quot;nonce&quot;: &quot;0x0&quot;,
+      &quot;number&quot;: &quot;0x400&quot;,
+      &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+      &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+      &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+      &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;version&quot;: &quot;0x0&quot;
+    },
+    &quot;proposals&quot;: [],
+    &quot;transactions&quot;: [
+      {
+        &quot;cell_deps&quot;: [],
+        &quot;hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;,
+        &quot;header_deps&quot;: [],
+        &quot;inputs&quot;: [
+          {
+            &quot;previous_output&quot;: {
+              &quot;index&quot;: &quot;0xffffffff&quot;,
+              &quot;tx_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+            },
+            &quot;since&quot;: &quot;0x400&quot;
+          }
+        ],
+        &quot;outputs&quot;: [
+          {
+            &quot;capacity&quot;: &quot;0x18e64b61cf&quot;,
+            &quot;lock&quot;: {
+              &quot;args&quot;: &quot;0x&quot;,
+              &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+              &quot;hash_type&quot;: &quot;data&quot;
+            },
+            &quot;type&quot;: null
+          }
+        ],
+        &quot;outputs_data&quot;: [
+          &quot;0x&quot;
+        ],
+        &quot;version&quot;: &quot;0x0&quot;,
+        &quot;witnesses&quot;: [
+          &quot;0x450000000c000000410000003500000010000000300000003100000028e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5000000000000000000&quot;
+        ]
+      }
+    ],
+    &quot;uncles&quot;: []
+  }
+}
+</code></pre>
+<p>The response looks like below when <code>verbosity</code> is 0.</p>
+<pre><code class="language-text">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x...&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_block_by_number' class='method'><code id='get_block_by_number.v'>fn <a href='#tymethod.get_block_by_number' class='fnname'>get_block_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockView.html" title="struct ckb_jsonrpc_types::blockchain::BlockView">BlockView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Block.html" title="struct ckb_types::generated::blockchain::Block">Block</a>&gt;&gt;&gt;</code></h3><div class='docblock'><p>Returns the block in the <a href="#canonical-chain">canonical chain</a> with the specific block number.</p>
+<h2 id="params-1" class="section-header"><a href="#params-1">Params</a></h2>
+<ul>
+<li><code>block_number</code> - the block number.</li>
+<li><code>verbosity</code> - reslut format which allows 0 and 2. (<strong>Optional</strong>, the default is 2.)</li>
+</ul>
+<h2 id="returns-1" class="section-header"><a href="#returns-1">Returns</a></h2>
+<p>The RPC returns the block when <code>block_number</code> is less than or equal to the tip block
+number returned by <a href="#tymethod.get_tip_block_number"><code>get_tip_block_number</code></a> and returns
+null otherwise.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, the PRC may return null or even
+different blocks in different invocations with the same <code>block_number</code>.</p>
+<p>When <code>verbosity</code> is 2, it returns a JSON object as the <code>result</code>. See <code>BlockView</code> for the
+schema.</p>
+<p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
+encodes the block serialized by molecule using schema <code>table Block</code>.</p>
+<h2 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_block_by_number&quot;,
+  &quot;params&quot;: [
+    &quot;0x400&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;header&quot;: {
+      &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+      &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+      &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+      &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+      &quot;nonce&quot;: &quot;0x0&quot;,
+      &quot;number&quot;: &quot;0x400&quot;,
+      &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+      &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+      &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+      &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;version&quot;: &quot;0x0&quot;
+    },
+    &quot;proposals&quot;: [],
+    &quot;transactions&quot;: [
+      {
+        &quot;cell_deps&quot;: [],
+        &quot;hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;,
+        &quot;header_deps&quot;: [],
+        &quot;inputs&quot;: [
+          {
+            &quot;previous_output&quot;: {
+              &quot;index&quot;: &quot;0xffffffff&quot;,
+              &quot;tx_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+            },
+            &quot;since&quot;: &quot;0x400&quot;
+          }
+        ],
+        &quot;outputs&quot;: [
+          {
+            &quot;capacity&quot;: &quot;0x18e64b61cf&quot;,
+            &quot;lock&quot;: {
+              &quot;args&quot;: &quot;0x&quot;,
+              &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+              &quot;hash_type&quot;: &quot;data&quot;
+            },
+            &quot;type&quot;: null
+          }
+        ],
+        &quot;outputs_data&quot;: [
+          &quot;0x&quot;
+        ],
+        &quot;version&quot;: &quot;0x0&quot;,
+        &quot;witnesses&quot;: [
+          &quot;0x450000000c000000410000003500000010000000300000003100000028e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5000000000000000000&quot;
+        ]
+      }
+    ],
+    &quot;uncles&quot;: []
+  }
+}
+</code></pre>
+<p>The response looks like below when <code>verbosity</code> is 0.</p>
+<pre><code class="language-text">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x...&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_header' class='method'><code id='get_header.v'>fn <a href='#tymethod.get_header' class='fnname'>get_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;&gt;</code></h3><div class='docblock'><p>Returns the information about a block header by hash.</p>
+<h2 id="params-2" class="section-header"><a href="#params-2">Params</a></h2>
+<ul>
+<li><code>block_hash</code> - the block hash.</li>
+<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+</ul>
+<h2 id="returns-2" class="section-header"><a href="#returns-2">Returns</a></h2>
+<p>The RPC returns a header or null. When the RPC returns a header, the block hash must equal to
+the parameter <code>block_hash</code>.</p>
+<p>If the block is in the <a href="#canonical-chain">canonical chain</a>, the RPC must return the header
+information. Otherwise the behavior is undefined. The RPC may return blocks found in local
+storage, or simply returns null for all blocks that are not in the canonical chain. And
+because of <a href="#chain-reorganization">chain reorganization</a>, for the same <code>block_hash</code>, the
+RPC may sometimes return null and sometimes return the block header.</p>
+<p>When <code>verbosity</code> is 1, it returns a JSON object as the <code>result</code>. See <code>HeaderView</code> for the
+schema.</p>
+<p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
+encodes the block header serialized by molecule using schema <code>table Header</code>.</p>
+<h2 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_header&quot;,
+  &quot;params&quot;: [
+    &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+    &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+    &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+    &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+    &quot;nonce&quot;: &quot;0x0&quot;,
+    &quot;number&quot;: &quot;0x400&quot;,
+    &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+    &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+    &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+    &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;version&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+<p>The response looks like below when <code>verbosity</code> is 0.</p>
+<pre><code class="language-text">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x...&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_header_by_number' class='method'><code id='get_header_by_number.v'>fn <a href='#tymethod.get_header_by_number' class='fnname'>get_header_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;&gt;</code></h3><div class='docblock'><p>Returns the block header in the <a href="#canonical-chain">canonical chain</a> with the specific block
+number.</p>
+<h2 id="params-3" class="section-header"><a href="#params-3">Params</a></h2>
+<ul>
+<li><code>block_number</code> - Number of a block</li>
+<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+</ul>
+<h2 id="returns-3" class="section-header"><a href="#returns-3">Returns</a></h2>
+<p>The RPC returns the block header when <code>block_number</code> is less than or equal to the tip block
+number returned by <a href="#tymethod.get_tip_block_number"><code>get_tip_block_number</code></a> and returns
+null otherwise.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, the PRC may return null or even
+different block headers in different invocations with the same <code>block_number</code>.</p>
+<p>When <code>verbosity</code> is 1, it returns a JSON object as the <code>result</code>. See <code>HeaderView</code> for the
+schema.</p>
+<p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
+encodes the block header serialized by molecule using schema <code>table Header</code>.</p>
+<h2 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_header_by_number&quot;,
+  &quot;params&quot;: [
+    &quot;0x400&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+    &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+    &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+    &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+    &quot;nonce&quot;: &quot;0x0&quot;,
+    &quot;number&quot;: &quot;0x400&quot;,
+    &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+    &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+    &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+    &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;version&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+<p>The response looks like below when <code>verbosity</code> is 0.</p>
+<pre><code class="language-text">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x...&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_transaction' class='method'><code id='get_transaction.v'>fn <a href='#tymethod.get_transaction' class='fnname'>get_transaction</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;tx_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.TransactionWithStatus.html" title="struct ckb_jsonrpc_types::blockchain::TransactionWithStatus">TransactionWithStatus</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns the information about a transaction requested by transaction hash.</p>
+<h2 id="returns-4" class="section-header"><a href="#returns-4">Returns</a></h2>
+<p>This RPC returns <code>null</code> if the transaction is not committed in the
+<a href="#canonical-chain">canonical chain</a> nor in the transaction memory pool.</p>
+<p>If the transaction is in the chain, the block hash is also returned.</p>
+<h2 id="params-4" class="section-header"><a href="#params-4">Params</a></h2>
+<ul>
+<li><code>tx_hash</code> - Hash of a transaction</li>
+</ul>
+<h2 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_transaction&quot;,
+  &quot;params&quot;: [
+    &quot;0xa0ef4eb5f4ceeb08a4c8524d84c5da95dce2f608e0ca2ec8091191b0f330c6e3&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;transaction&quot;: {
+      &quot;cell_deps&quot;: [
+        {
+          &quot;dep_type&quot;: &quot;code&quot;,
+          &quot;out_point&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;
+          }
+        }
+      ],
+      &quot;hash&quot;: &quot;0xa0ef4eb5f4ceeb08a4c8524d84c5da95dce2f608e0ca2ec8091191b0f330c6e3&quot;,
+      &quot;header_deps&quot;: [
+        &quot;0x7978ec7ce5b507cfb52e149e36b1a23f6062ed150503c85bbf825da3599095ed&quot;
+      ],
+      &quot;inputs&quot;: [
+        {
+          &quot;previous_output&quot;: {
+            &quot;index&quot;: &quot;0x0&quot;,
+            &quot;tx_hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;
+          },
+          &quot;since&quot;: &quot;0x0&quot;
+        }
+      ],
+      &quot;outputs&quot;: [
+        {
+          &quot;capacity&quot;: &quot;0x2540be400&quot;,
+          &quot;lock&quot;: {
+            &quot;args&quot;: &quot;0x&quot;,
+            &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+            &quot;hash_type&quot;: &quot;data&quot;
+          },
+          &quot;type&quot;: null
+        }
+      ],
+      &quot;outputs_data&quot;: [
+        &quot;0x&quot;
+      ],
+      &quot;version&quot;: &quot;0x0&quot;,
+      &quot;witnesses&quot;: []
+    },
+    &quot;tx_status&quot;: {
+      &quot;block_hash&quot;: null,
+      &quot;status&quot;: &quot;pending&quot;
+    }
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_block_hash' class='method'><code id='get_block_hash.v'>fn <a href='#tymethod.get_block_hash' class='fnname'>get_block_hash</a>(&amp;self, block_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns the hash of a block in the <a href="#canonical-chain">canonical chain</a> with the specified
+<code>block_number</code>.</p>
+<h2 id="params-5" class="section-header"><a href="#params-5">Params</a></h2>
+<ul>
+<li><code>block_number</code> - Block number</li>
+</ul>
+<h2 id="returns-5" class="section-header"><a href="#returns-5">Returns</a></h2>
+<p>The RPC returns the block hash when <code>block_number</code> is less than or equal to the tip block
+number returned by <a href="#tymethod.get_tip_block_number"><code>get_tip_block_number</code></a> and returns
+null otherwise.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, the PRC may return null or even
+different block hashes in different invocations with the same <code>block_number</code>.</p>
+<h2 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_block_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x400&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_tip_header' class='method'><code id='get_tip_header.v'>fn <a href='#tymethod.get_tip_header' class='fnname'>get_tip_header</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;verbosity: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint32.html" title="type ckb_jsonrpc_types::uints::Uint32">Uint32</a>&gt;<br>) -&gt; Result&lt;<a class="enum" href="../../ckb_jsonrpc_types/enum.ResponseFormat.html" title="enum ckb_jsonrpc_types::ResponseFormat">ResponseFormat</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.HeaderView.html" title="struct ckb_jsonrpc_types::blockchain::HeaderView">HeaderView</a>, <a class="struct" href="../../ckb_types/generated/blockchain/struct.Header.html" title="struct ckb_types::generated::blockchain::Header">Header</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns the header with the highest block number in the <a href="#canonical-chain">canonical chain</a>.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, the block number returned can be
+less than previous invocations and different invocations may return different block headers
+with the same block number.</p>
+<h2 id="params-6" class="section-header"><a href="#params-6">Params</a></h2>
+<ul>
+<li><code>verbosity</code> - reslut format which allows 0 and 1. (<strong>Optional</strong>, the default is 1.)</li>
+</ul>
+<h2 id="returns-6" class="section-header"><a href="#returns-6">Returns</a></h2>
+<p>When <code>verbosity</code> is 1, the RPC returns a JSON object as the <code>result</code>. See HeaderView for the
+schema.</p>
+<p>When <code>verbosity</code> is 0, it returns a 0x-prefixed hex string as the <code>result</code>. The string
+encodes the header serialized by molecule using schema <code>table Header</code>.</p>
+<h2 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_tip_header&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+    &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+    &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+    &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+    &quot;nonce&quot;: &quot;0x0&quot;,
+    &quot;number&quot;: &quot;0x400&quot;,
+    &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+    &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+    &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+    &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+    &quot;version&quot;: &quot;0x0&quot;
+  },
+  &quot;id&quot;: 42,
+}
+</code></pre>
+<p>The response looks like below when <code>verbosity</code> is 0.</p>
+<pre><code class="language-text">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x...&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_cells_by_lock_hash' class='method'><code id='get_cells_by_lock_hash.v'>fn <a href='#tymethod.get_cells_by_lock_hash' class='fnname'>get_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;from: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;to: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a><br>) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellOutputWithOutPoint.html" title="struct ckb_jsonrpc_types::cell::CellOutputWithOutPoint">CellOutputWithOutPoint</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>(Disabled since 0.36.0) This method is deprecated for reasons of flexibility.
+Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate
+solution</p>
+</div></div><div class='docblock'><p>Returns the information about <a href="#live-cell">live cell</a>s collection by the hash of lock script.</p>
+<p>Returns all the output cells that:</p>
+<ul>
+<li>are still live,</li>
+<li>have the lock script which hash matches <code>lock_hash</code>, and</li>
+<li>are created in the transactions which are commit between block <code>from</code> (inclusively) and
+<code>to</code> (inclusively).</li>
+</ul>
+<h2 id="params-7" class="section-header"><a href="#params-7">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+<li><code>from</code> - Start block number</li>
+<li><code>to</code> - End block number. This RPC restricts that <code>to</code> is greater than <code>from</code> and `to</li>
+</ul>
+<ul>
+<li>from &lt; 100`.</li>
+</ul>
+<h2 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_cells_by_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;,
+    &quot;0xa&quot;,
+    &quot;0xe&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;block_hash&quot;: &quot;0xf293d02ce5e101b160912aaf15b1b87517b7a6d572c13af9ae4101c1143b22ad&quot;,
+      &quot;capacity&quot;: &quot;0x2ca86f2642&quot;,
+      &quot;cellbase&quot;: true,
+      &quot;lock&quot;: {
+        &quot;args&quot;: &quot;0x&quot;,
+        &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+        &quot;hash_type&quot;: &quot;data&quot;
+      },
+      &quot;out_point&quot;: {
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xa510932a80fda15a774203404453c5f9c0e8582f11c40f8ce5396f2460f8ccbf&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;,
+      &quot;type&quot;: null
+    },
+    {
+      &quot;block_hash&quot;: &quot;0x63b872c02b1c2bd0c1af4f73f68ac04e2a3763a71f9656a823848d346619ffde&quot;,
+      &quot;capacity&quot;: &quot;0x2ca86e3dd4&quot;,
+      &quot;cellbase&quot;: true,
+      &quot;lock&quot;: {
+        &quot;args&quot;: &quot;0x&quot;,
+        &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+        &quot;hash_type&quot;: &quot;data&quot;
+      },
+      &quot;out_point&quot;: {
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x0b0fb337a9168132d3771f07e0ba055419c7e8f7bc2681a9eb445e61f44e1eb9&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;,
+      &quot;type&quot;: null
+    },
+    {
+      &quot;block_hash&quot;: &quot;0x6bbdd9dc71784d500daadf391ca9035900b3ff18ed868d7d4fe4b17fdea88853&quot;,
+      &quot;capacity&quot;: &quot;0x2ca86d5691&quot;,
+      &quot;cellbase&quot;: true,
+      &quot;lock&quot;: {
+        &quot;args&quot;: &quot;0x&quot;,
+        &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+        &quot;hash_type&quot;: &quot;data&quot;
+      },
+      &quot;out_point&quot;: {
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xc336a23a785f3fec8b6e29e2c00d23483f1c6ad410b6b9fc0f62baf65d5efcc7&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;,
+      &quot;type&quot;: null
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.get_live_cell' class='method'><code id='get_live_cell.v'>fn <a href='#tymethod.get_live_cell' class='fnname'>get_live_cell</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;out_point: <a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.OutPoint.html" title="struct ckb_jsonrpc_types::blockchain::OutPoint">OutPoint</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;with_data: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a><br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/cell/struct.CellWithStatus.html" title="struct ckb_jsonrpc_types::cell::CellWithStatus">CellWithStatus</a>&gt;</code></h3><div class='docblock'><p>Returns the status about a cell. The RPC returns extra informations if it is a [live cell]
+(#live-cell).</p>
+<h2 id="returns-7" class="section-header"><a href="#returns-7">Returns</a></h2>
+<p>This RPC tells whether a cell is live or not.</p>
+<p>If the cell is live, the RPC will return details about the cell. Otherwise the field <code>cell</code> is
+null in the result.</p>
+<p>If the cell is live and <code>with_data</code> is set to <code>false</code>, the field <code>cell.data</code> is null in the
+result.</p>
+<h2 id="params-8" class="section-header"><a href="#params-8">Params</a></h2>
+<ul>
+<li><code>out_point</code> - Reference to the cell by transaction hash and output index.</li>
+<li><code>with_data</code> - Whether the RPC should return cell data. Cell data can be huge, if client
+does not need the data, it should set this to <code>false</code> to save bandwidth.</li>
+</ul>
+<h2 id="examples-8" class="section-header"><a href="#examples-8">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 2,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_live_cell&quot;,
+  &quot;params&quot;: [
+    {
+      &quot;index&quot;: &quot;0x0&quot;,
+      &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;
+    },
+    true
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;cell&quot;: {
+      &quot;data&quot;: {
+        &quot;content&quot;: &quot;0x7f454c460201010000000000000000000200f3000100000078000100000000004000000000000000980000000000000005000000400038000100400003000200010000000500000000000000000000000000010000000000000001000000000082000000000000008200000000000000001000000000000001459308d00573000000002e7368737472746162002e74657874000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000000010000000600000000000000780001000000000078000000000000000a0000000000000000000000000000000200000000000000000000000000000001000000030000000000000000000000000000000000000082000000000000001100000000000000000000000000000001000000000000000000000000000000&quot;,
+        &quot;hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;
+      },
+      &quot;output&quot;: {
+        &quot;capacity&quot;: &quot;0x802665800&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      }
+    },
+    &quot;status&quot;: &quot;live&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_tip_block_number' class='method'><code id='get_tip_block_number.v'>fn <a href='#tymethod.get_tip_block_number' class='fnname'>get_tip_block_number</a>(&amp;self) -&gt; Result&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;</code></h3><div class='docblock'><p>Returns the highest block number in the <a href="#canonical-chain">canonical chain</a>.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, the returned block number may be
+less than a value returned in the previous invocation.</p>
+<h2 id="examples-9" class="section-header"><a href="#examples-9">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_tip_block_number&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x400&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.get_current_epoch' class='method'><code id='get_current_epoch.v'>fn <a href='#tymethod.get_current_epoch' class='fnname'>get_current_epoch</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.EpochView.html" title="struct ckb_jsonrpc_types::blockchain::EpochView">EpochView</a>&gt;</code></h3><div class='docblock'><p>Returns the epoch with the highest number in the <a href="#canonical-chain">canonical chain</a>.</p>
+<p>Pay attention that like blocks with the specific block number may change because of <a href="#chain-reorganization">chain
+reorganization</a>, This RPC may return different epoches which have
+the same epoch number.</p>
+<h2 id="examples-10" class="section-header"><a href="#examples-10">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_current_epoch&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+    &quot;length&quot;: &quot;0x708&quot;,
+    &quot;number&quot;: &quot;0x1&quot;,
+    &quot;start_number&quot;: &quot;0x3e8&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_epoch_by_number' class='method'><code id='get_epoch_by_number.v'>fn <a href='#tymethod.get_epoch_by_number' class='fnname'>get_epoch_by_number</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;epoch_number: <a class="type" href="../../ckb_jsonrpc_types/primitive/type.EpochNumber.html" title="type ckb_jsonrpc_types::primitive::EpochNumber">EpochNumber</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.EpochView.html" title="struct ckb_jsonrpc_types::blockchain::EpochView">EpochView</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns the epoch in the <a href="#canonical-chain">canonical chain</a> with the specific epoch number.</p>
+<h2 id="params-9" class="section-header"><a href="#params-9">Params</a></h2>
+<ul>
+<li><code>epoch_number</code> - Epoch number</li>
+</ul>
+<h2 id="returns-8" class="section-header"><a href="#returns-8">Returns</a></h2>
+<p>The RPC returns the epoch when <code>epoch_number</code> is less than or equal to the current epoch number
+returned by <a href="#tymethod.get_current_epoch"><code>get_current_epoch</code></a> and returns null otherwise.</p>
+<p>Because of <a href="#chain-reorganization">chain reorganization</a>, for the same <code>epoch_number</code>, this
+RPC may return null or different epoches in different invocations.</p>
+<h2 id="examples-11" class="section-header"><a href="#examples-11">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_epoch_by_number&quot;,
+  &quot;params&quot;: [
+    &quot;0x0&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;compact_target&quot;: &quot;0x20010000&quot;,
+    &quot;length&quot;: &quot;0x3e8&quot;,
+    &quot;number&quot;: &quot;0x0&quot;,
+    &quot;start_number&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_cellbase_output_capacity_details' class='method'><code id='get_cellbase_output_capacity_details.v'>fn <a href='#tymethod.get_cellbase_output_capacity_details' class='fnname'>get_cellbase_output_capacity_details</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockReward.html" title="struct ckb_jsonrpc_types::blockchain::BlockReward">BlockReward</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use the RPC method <a href="#tymethod.get_block_economic_state"><code>get_block_economic_state</code></a> instead</p>
+</div></div><div class='docblock'><p>Returns each component of the created CKB in the block's cellbase.</p>
+<p>This RPC returns null if the block is not in the <a href="#canonical-chain">canonical chain</a>.</p>
+<p>CKB delays CKB creation for miners. The output cells in the cellbase of block N are for the
+miner creating block <code>N - 1 - ProposalWindow.farthest</code>.</p>
+<p>In mainnet, <code>ProposalWindow.farthest</code> is 10, so the outputs in block 100 are rewards for
+miner creating block 89.</p>
+<h2 id="params-10" class="section-header"><a href="#params-10">Params</a></h2>
+<ul>
+<li><code>block_hash</code> - Specifies the block hash which cellbase outputs should be analyzed.</li>
+</ul>
+<h2 id="returns-9" class="section-header"><a href="#returns-9">Returns</a></h2>
+<p>If the block with the hash <code>block_hash</code> is in the <a href="#canonical-chain">canonical chain</a> and
+its block number is N, return the block rewards analysis for block `N</p>
+<ul>
+<li>1 - ProposalWindow.farthest`.</li>
+</ul>
+<h2 id="examples-12" class="section-header"><a href="#examples-12">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_cellbase_output_capacity_details&quot;,
+  &quot;params&quot;: [
+    &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;primary&quot;: &quot;0x18ce922bca&quot;,
+    &quot;proposal_reward&quot;: &quot;0x0&quot;,
+    &quot;secondary&quot;: &quot;0x17b93605&quot;,
+    &quot;total&quot;: &quot;0x18e64b61cf&quot;,
+    &quot;tx_fee&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_block_economic_state' class='method'><code id='get_block_economic_state.v'>fn <a href='#tymethod.get_block_economic_state' class='fnname'>get_block_economic_state</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;block_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/blockchain/struct.BlockEconomicState.html" title="struct ckb_jsonrpc_types::blockchain::BlockEconomicState">BlockEconomicState</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns increased issuance, miner reward and total transaction fee of a block.</p>
+<p>This RPC returns null if the block is not in the <a href="#canonical-chain">canonical chain</a>.</p>
+<p>CKB delays CKB creation for miners. The output cells in the cellbase of block N are for the
+miner creating block <code>N - 1 - ProposalWindow.farthest</code>.</p>
+<p>In mainnet, <code>ProposalWindow.farthest</code> is 10, so the outputs in block 100 are rewards for
+miner creating block 89.</p>
+<p>Because of the delay, this RPC returns null if the block rewards are not finalized yet. For
+example, the economic state for block 89 is only available when the number returned by
+<a href="#tymethod.get_tip_block_number"><code>get_tip_block_number</code></a> is greater than or equal to 100.</p>
+<h2 id="params-11" class="section-header"><a href="#params-11">Params</a></h2>
+<ul>
+<li><code>block_hash</code> - Specifies the block hash which rewards should be analyzed.</li>
+</ul>
+<h2 id="returns-10" class="section-header"><a href="#returns-10">Returns</a></h2>
+<p>If the block with the hash <code>block_hash</code> is in the <a href="#canonical-chain">canonical chain</a> and
+its rewards have been finalized, return the block rewards analysis for this block.</p>
+<h2 id="examples-13" class="section-header"><a href="#examples-13">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_block_economic_state&quot;,
+  &quot;params&quot;: [
+    &quot;0x02530b25ad0ff677acc365cb73de3e8cc09c7ddd58272e879252e199d08df83b&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;finalized_at&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+    &quot;issuance&quot;: {
+      &quot;primary&quot;: &quot;0x18ce922bca&quot;,
+      &quot;secondary&quot;: &quot;0x7f02ec655&quot;
+    },
+    &quot;miner_reward&quot;: {
+      &quot;committed&quot;: &quot;0x0&quot;,
+      &quot;primary&quot;: &quot;0x18ce922bca&quot;,
+      &quot;proposal&quot;: &quot;0x0&quot;,
+      &quot;secondary&quot;: &quot;0x17b93605&quot;
+    },
+    &quot;txs_fee&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+</div></div><span class='loading-content'>Loading content...</span>
+            <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt;</code></h3><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
+</div></div><span class='loading-content'>Loading content...</span>
+            <h2 id='implementors' class='small-section-header'>Implementors<a href='#implementors' class='anchor'></a></h2><div class='item-list' id='implementors-list'></div><span class='loading-content'>Loading content...</span><script type="text/javascript" src="../../implementors/ckb_rpc/module/trait.ChainRpc.js" async></script></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_rpc";</script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
