@@ -1,14 +1,559 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `IndexerRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, IndexerRpc"><title>ckb_rpc::module::IndexerRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait IndexerRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.deindex_lock_hash">deindex_lock_hash</a><a href="#tymethod.get_capacity_by_lock_hash">get_capacity_by_lock_hash</a><a href="#tymethod.get_live_cells_by_lock_hash">get_live_cells_by_lock_hash</a><a href="#tymethod.get_lock_hash_index_states">get_lock_hash_index_states</a><a href="#tymethod.get_transactions_by_lock_hash">get_transactions_by_lock_hash</a><a href="#tymethod.index_lock_hash">index_lock_hash</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'IndexerRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/indexer.rs.html#10-44' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>IndexerRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait IndexerRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
-    fn <a href='#tymethod.get_live_cells_by_lock_hash' class='fnname'>get_live_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LiveCell.html" title="struct ckb_jsonrpc_types::indexer::LiveCell">LiveCell</a>&gt;&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.get_transactions_by_lock_hash' class='fnname'>get_transactions_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.CellTransaction.html" title="struct ckb_jsonrpc_types::indexer::CellTransaction">CellTransaction</a>&gt;&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.index_lock_hash' class='fnname'>index_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_index_from: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.deindex_lock_hash' class='fnname'>deindex_lock_hash</a>(&amp;self, _lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;;
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `IndexerRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, IndexerRpc"><title>ckb_rpc::module::IndexerRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait IndexerRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.deindex_lock_hash">deindex_lock_hash</a><a href="#tymethod.get_capacity_by_lock_hash">get_capacity_by_lock_hash</a><a href="#tymethod.get_live_cells_by_lock_hash">get_live_cells_by_lock_hash</a><a href="#tymethod.get_lock_hash_index_states">get_lock_hash_index_states</a><a href="#tymethod.get_transactions_by_lock_hash">get_transactions_by_lock_hash</a><a href="#tymethod.index_lock_hash">index_lock_hash</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'IndexerRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/indexer.rs.html#17-633' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>IndexerRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait IndexerRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
+    fn <a href='#tymethod.get_live_cells_by_lock_hash' class='fnname'>get_live_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LiveCell.html" title="struct ckb_jsonrpc_types::indexer::LiveCell">LiveCell</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_transactions_by_lock_hash' class='fnname'>get_transactions_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.CellTransaction.html" title="struct ckb_jsonrpc_types::indexer::CellTransaction">CellTransaction</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.index_lock_hash' class='fnname'>index_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;index_from: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.deindex_lock_hash' class='fnname'>deindex_lock_hash</a>(&amp;self, lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_lock_hash_index_states' class='fnname'>get_lock_hash_index_states</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;&gt;;
-<div class='item-spacer'></div>    fn <a href='#tymethod.get_capacity_by_lock_hash' class='fnname'>get_capacity_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashCapacity.html" title="struct ckb_jsonrpc_types::indexer::LockHashCapacity">LockHashCapacity</a>&gt;&gt;;
+<div class='item-spacer'></div>    fn <a href='#tymethod.get_capacity_by_lock_hash' class='fnname'>get_capacity_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashCapacity.html" title="struct ckb_jsonrpc_types::indexer::LockHashCapacity">LockHashCapacity</a>&gt;&gt;;
 
     fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt; { ... }
-}</pre></div>
-            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.get_live_cells_by_lock_hash' class='method'><code id='get_live_cells_by_lock_hash.v'>fn <a href='#tymethod.get_live_cells_by_lock_hash' class='fnname'>get_live_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LiveCell.html" title="struct ckb_jsonrpc_types::indexer::LiveCell">LiveCell</a>&gt;&gt;</code></h3><h3 id='tymethod.get_transactions_by_lock_hash' class='method'><code id='get_transactions_by_lock_hash.v'>fn <a href='#tymethod.get_transactions_by_lock_hash' class='fnname'>get_transactions_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.CellTransaction.html" title="struct ckb_jsonrpc_types::indexer::CellTransaction">CellTransaction</a>&gt;&gt;</code></h3><h3 id='tymethod.index_lock_hash' class='method'><code id='index_lock_hash.v'>fn <a href='#tymethod.index_lock_hash' class='fnname'>index_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;_index_from: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;</code></h3><h3 id='tymethod.deindex_lock_hash' class='method'><code id='deindex_lock_hash.v'>fn <a href='#tymethod.deindex_lock_hash' class='fnname'>deindex_lock_hash</a>(&amp;self, _lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><h3 id='tymethod.get_lock_hash_index_states' class='method'><code id='get_lock_hash_index_states.v'>fn <a href='#tymethod.get_lock_hash_index_states' class='fnname'>get_lock_hash_index_states</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;&gt;</code></h3><h3 id='tymethod.get_capacity_by_lock_hash' class='method'><code id='get_capacity_by_lock_hash.v'>fn <a href='#tymethod.get_capacity_by_lock_hash' class='fnname'>get_capacity_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;_lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashCapacity.html" title="struct ckb_jsonrpc_types::indexer::LockHashCapacity">LockHashCapacity</a>&gt;&gt;</code></h3></div><span class='loading-content'>Loading content...</span>
-            <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt;</code></h3><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
+}</pre></div><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>RPC Module Indexer which index cells by lock script hash.</p>
+<p>The index is disabled by default, which <strong>must</strong> be enabled by calling <a href="#tymethod.index_lock_hash"><code>index_lock_hash</code></a> first.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.get_live_cells_by_lock_hash' class='method'><code id='get_live_cells_by_lock_hash.v'>fn <a href='#tymethod.get_live_cells_by_lock_hash' class='fnname'>get_live_cells_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LiveCell.html" title="struct ckb_jsonrpc_types::indexer::LiveCell">LiveCell</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Returns the live cells collection by the hash of lock script.</p>
+<p>This RPC requires <a href="#tymethod.index_lock_hash">creating the index</a> on <code>lock_hash</code> first.
+It returns all live cells only if the index is created starting from the genesis block.</p>
+<h2 id="params" class="section-header"><a href="#params">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+<li><code>page</code> - Page number, starting from 0</li>
+<li><code>per</code> - Page size, max value is 50</li>
+<li><code>reverse_order</code> - Returns the live cells collection in reverse order. (<strong>Optional</strong>, default is false)</li>
+</ul>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_live_cells_by_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;,
+    &quot;0xa&quot;,
+    &quot;0xe&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6562e4e&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x98&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x2d811f9ad7f2f7319171a6da4c842dd78e36682b4ac74da4f67b97c9f7d7a02b&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb66b2496&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x99&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x1ccf68bf7cb96a1a7f992c27bcfea6ebfc0fe32602196569aaa0cb3cd3e9f5ea&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb68006e8&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9a&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x74db38ad40184dd0528f4841e10599ff97bfbf2b5313754d1e96920d8523a5d4&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb694d55e&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9b&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xf7d0ecc70015b46c5ab1cc8462592ae612fdaada200f643f3e1ce633bcc5ad1d&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6a99016&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9c&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xc3d232bb6b0e5d9a71a0978c9ab66c7a127ed37aeed6a2509dcc10d994c8c605&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6be372c&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9d&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x10139a08beae170a35fbfcece6d50561ec61e13e4c6438435c1f2021331d7c4d&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6d2cabb&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9e&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x39a083a1deb39b923a600a6f0714663085b5d2011b886b160962e20f1a28b550&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6e74ae0&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9f&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x2899c066f80a04b9a168e4499760ad1d768f44a3d673779905d88edd86362ac6&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb6fbb7b4&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa0&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xe2579280875a5d14538b0cc2356707792189662d5f8292541d9856ef291e81bf&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb7101155&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa1&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xd6121e80237c79182d55ec0efb9fa75bc9cc592f818057ced51aac6bb625e016&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb72457dc&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa2&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x624eba1135e54a5988cb2ec70d42fa860d1d5658ed7f8d402615dff7d598e4b6&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb7388b65&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa3&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x7884b4cf85bc02cb73ec41d5cbbbf158eebca6ef855419ce57ff7c1d97b5be58&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb74cac0a&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa4&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xb613ba9b5f6177657493492dd523a63720d855ae9749887a0de881b894a1d6a6&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    },
+    {
+      &quot;cell_output&quot;: {
+        &quot;capacity&quot;: &quot;0x2cb760b9e6&quot;,
+        &quot;lock&quot;: {
+          &quot;args&quot;: &quot;0x&quot;,
+          &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+          &quot;hash_type&quot;: &quot;data&quot;
+        },
+        &quot;type&quot;: null
+      },
+      &quot;cellbase&quot;: true,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa5&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x701f4b962c1650810800ee6ed981841692c1939a4b597e9e7a726c5db77f6164&quot;
+      },
+      &quot;output_data_len&quot;: &quot;0x0&quot;
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.get_transactions_by_lock_hash' class='method'><code id='get_transactions_by_lock_hash.v'>fn <a href='#tymethod.get_transactions_by_lock_hash' class='fnname'>get_transactions_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;per_page: <a class="type" href="../../ckb_jsonrpc_types/uints/type.Uint64.html" title="type ckb_jsonrpc_types::uints::Uint64">Uint64</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;reverse_order: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.CellTransaction.html" title="struct ckb_jsonrpc_types::indexer::CellTransaction">CellTransaction</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Returns the transactions collection by the hash of lock script.</p>
+<p>This RPC requires <a href="#tymethod.index_lock_hash">creating the index</a> on <code>lock_hash</code> first.
+It returns all matched transactions only if the index is created starting from the genesis block.</p>
+<h2 id="params-1" class="section-header"><a href="#params-1">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+<li><code>page</code> - Page number, starting from 0</li>
+<li><code>per</code> - Page size, max value is 50</li>
+<li><code>reverse_order</code> - Return the transactions collection in reverse order. (<strong>Optional</strong>, default is false)</li>
+</ul>
+<h2 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_transactions_by_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;,
+    &quot;0xa&quot;,
+    &quot;0xe&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x98&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x2d811f9ad7f2f7319171a6da4c842dd78e36682b4ac74da4f67b97c9f7d7a02b&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x99&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x1ccf68bf7cb96a1a7f992c27bcfea6ebfc0fe32602196569aaa0cb3cd3e9f5ea&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9a&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x74db38ad40184dd0528f4841e10599ff97bfbf2b5313754d1e96920d8523a5d4&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9b&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xf7d0ecc70015b46c5ab1cc8462592ae612fdaada200f643f3e1ce633bcc5ad1d&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9c&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xc3d232bb6b0e5d9a71a0978c9ab66c7a127ed37aeed6a2509dcc10d994c8c605&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9d&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x10139a08beae170a35fbfcece6d50561ec61e13e4c6438435c1f2021331d7c4d&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9e&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x39a083a1deb39b923a600a6f0714663085b5d2011b886b160962e20f1a28b550&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0x9f&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x2899c066f80a04b9a168e4499760ad1d768f44a3d673779905d88edd86362ac6&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa0&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xe2579280875a5d14538b0cc2356707792189662d5f8292541d9856ef291e81bf&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa1&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xd6121e80237c79182d55ec0efb9fa75bc9cc592f818057ced51aac6bb625e016&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa2&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x624eba1135e54a5988cb2ec70d42fa860d1d5658ed7f8d402615dff7d598e4b6&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa3&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x7884b4cf85bc02cb73ec41d5cbbbf158eebca6ef855419ce57ff7c1d97b5be58&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa4&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0xb613ba9b5f6177657493492dd523a63720d855ae9749887a0de881b894a1d6a6&quot;
+      }
+    },
+    {
+      &quot;consumed_by&quot;: null,
+      &quot;created_by&quot;: {
+        &quot;block_number&quot;: &quot;0xa5&quot;,
+        &quot;index&quot;: &quot;0x0&quot;,
+        &quot;tx_hash&quot;: &quot;0x701f4b962c1650810800ee6ed981841692c1939a4b597e9e7a726c5db77f6164&quot;
+      }
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.index_lock_hash' class='method'><code id='index_lock_hash.v'>fn <a href='#tymethod.index_lock_hash' class='fnname'>index_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;index_from: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.BlockNumber.html" title="type ckb_jsonrpc_types::primitive::BlockNumber">BlockNumber</a>&gt;<br>) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Creates index for live cells and transactions by the hash of lock script.</p>
+<p>The indices are disabled by default. Clients have to create indices first before querying.</p>
+<p>Creating index for the same <code>lock_hash</code> with different <code>index_from</code> is an undefined
+behaviour. Please <a href="#tymethod.deindex_lock_hash">delete the index</a> first.</p>
+<h2 id="params-2" class="section-header"><a href="#params-2">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+<li><code>index_from</code> - Create an index starting from this block number (exclusive). 0 is special
+which also indexes transactions in the genesis block. (<strong>Optional</strong>, the default is the max
+block number in the canonical chain, which means starting index from the next new block.)</li>
+</ul>
+<h2 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;index_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;,
+    &quot;0x400&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+    &quot;block_number&quot;: &quot;0x400&quot;,
+    &quot;lock_hash&quot;: &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.deindex_lock_hash' class='method'><code id='deindex_lock_hash.v'>fn <a href='#tymethod.deindex_lock_hash' class='fnname'>deindex_lock_hash</a>(&amp;self, lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Removes index for live cells and transactions by the hash of lock script.</p>
+<h2 id="params-3" class="section-header"><a href="#params-3">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+</ul>
+<h2 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;deindex_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+</div><h3 id='tymethod.get_lock_hash_index_states' class='method'><code id='get_lock_hash_index_states.v'>fn <a href='#tymethod.get_lock_hash_index_states' class='fnname'>get_lock_hash_index_states</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashIndexState.html" title="struct ckb_jsonrpc_types::indexer::LockHashIndexState">LockHashIndexState</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Returns states of all created lock hash indices.</p>
+<h2 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_lock_hash_index_states&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;block_hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+      &quot;block_number&quot;: &quot;0x400&quot;,
+      &quot;lock_hash&quot;: &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.get_capacity_by_lock_hash' class='method'><code id='get_capacity_by_lock_hash.v'>fn <a href='#tymethod.get_capacity_by_lock_hash' class='fnname'>get_capacity_by_lock_hash</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;lock_hash: <a class="struct" href="../../ckb_fixed_hash_core/struct.H256.html" title="struct ckb_fixed_hash_core::H256">H256</a><br>) -&gt; Result&lt;<a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/indexer/struct.LockHashCapacity.html" title="struct ckb_jsonrpc_types::indexer::LockHashCapacity">LockHashCapacity</a>&gt;&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Returns the total capacity by the hash of lock script.</p>
+<p>This RPC requires <a href="#tymethod.index_lock_hash">creating the index</a> on <code>lock_hash</code> first.
+It returns the correct balance only if the index is created starting from the genesis block.</p>
+<h2 id="params-4" class="section-header"><a href="#params-4">Params</a></h2>
+<ul>
+<li><code>lock_hash</code> - Cell lock script hash</li>
+</ul>
+<h2 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_capacity_by_lock_hash&quot;,
+  &quot;params&quot;: [
+    &quot;0x4ceaa32f692948413e213ce6f3a83337145bde6e11fd8cb94377ce2637dcc412&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;block_number&quot;: &quot;0x400&quot;,
+    &quot;capacity&quot;: &quot;0xb00fb84df292&quot;,
+    &quot;cells_count&quot;: &quot;0x3f5&quot;
+  }
+}
+</code></pre>
+</div></div><span class='loading-content'>Loading content...</span>
+            <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt;</code></h3><div class='stability'><div class='stab deprecated'><span class='emoji'>👎</span> Deprecated since 0.36.0: <p>Please use <a href="https://github.com/nervosnetwork/ckb-indexer">ckb-indexer</a> as an alternate solution.</p>
+</div></div><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
 </div></div><span class='loading-content'>Loading content...</span>
             <h2 id='implementors' class='small-section-header'>Implementors<a href='#implementors' class='anchor'></a></h2><div class='item-list' id='implementors-list'></div><span class='loading-content'>Loading content...</span><script type="text/javascript" src="../../implementors/ckb_rpc/module/trait.IndexerRpc.js" async></script></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_rpc";</script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>

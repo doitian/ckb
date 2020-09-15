@@ -365,6 +365,8 @@
 <span id="365">365</span>
 <span id="366">366</span>
 <span id="367">367</span>
+<span id="368">368</span>
+<span id="369">369</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="ident">ckb_dao</span>::<span class="ident">DaoCalculator</span>;
@@ -386,7 +388,9 @@
 
 <span class="doccomment">/// RPC Module Experiment for experimenting methods.</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// Use the methods in this module carefully. They have a high probability to be deprecated later.</span>
+<span class="doccomment">/// **EXPERIMENTAL warning**</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// The methods here may be removed or changed in future releases without prior notifications.</span>
 <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">server</span>)]</span>
 <span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">ExperimentRpc</span> {
     <span class="doccomment">/// Returns the transaction hash for the given transaction.</span>

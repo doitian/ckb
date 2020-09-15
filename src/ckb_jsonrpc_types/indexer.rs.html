@@ -38,45 +38,111 @@
 <span id="38">38</span>
 <span id="39">39</span>
 <span id="40">40</span>
+<span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
+<span id="73">73</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">BlockNumber</span>, <span class="ident">Capacity</span>, <span class="ident">CellOutput</span>, <span class="ident">Uint64</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::<span class="ident">H256</span>;
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
-<span class="comment">// This is used as return value of get_live_cells_by_lock_hash RPC</span>
+<span class="doccomment">/// An indexed live cell.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LiveCell</span> {
+    <span class="doccomment">/// Where this cell is created.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The cell is the `created_by.index`-th output in the transaction `created_by.tx_hash`, which</span>
+    <span class="doccomment">/// has been committed in at the height `created_by.block_number` in the chain.</span>
     <span class="kw">pub</span> <span class="ident">created_by</span>: <span class="ident">TransactionPoint</span>,
+    <span class="doccomment">/// The cell properties.</span>
     <span class="kw">pub</span> <span class="ident">cell_output</span>: <span class="ident">CellOutput</span>,
+    <span class="doccomment">/// The cell data length.</span>
     <span class="kw">pub</span> <span class="ident">output_data_len</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Whether this cell is an output of a cellbase transaction.</span>
     <span class="kw">pub</span> <span class="ident">cellbase</span>: <span class="ident">bool</span>,
 }
 
-<span class="comment">// This is used as return value of get_transactions_by_lock_hash RPC</span>
+<span class="doccomment">/// Cell related transaction information.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CellTransaction</span> {
+    <span class="doccomment">/// Where this cell is created.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The cell is the `created_by.index`-th output in the transaction `created_by.tx_hash`, which</span>
+    <span class="doccomment">/// has been committed in at the height `created_by.block_number` in the chain.</span>
     <span class="kw">pub</span> <span class="ident">created_by</span>: <span class="ident">TransactionPoint</span>,
+    <span class="doccomment">/// Where this cell is consumed.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is null if the cell is still live.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The cell is consumed as the `consumed_by.index`-th input in the transaction `consumed_by.tx_hash`, which</span>
+    <span class="doccomment">/// has been committed in at the height `consumed_by.block_number` in the chain.</span>
     <span class="kw">pub</span> <span class="ident">consumed_by</span>: <span class="prelude-ty">Option</span><span class="op">&lt;</span><span class="ident">TransactionPoint</span><span class="op">&gt;</span>,
 }
 
+<span class="doccomment">/// Reference to a cell by trnasction hash and output index, as well as in which block this</span>
+<span class="doccomment">/// transaction is committed.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TransactionPoint</span> {
+    <span class="doccomment">/// In which block the transaction creating the cell is committed.</span>
     <span class="kw">pub</span> <span class="ident">block_number</span>: <span class="ident">BlockNumber</span>,
+    <span class="doccomment">/// In which transaction this cell is an output.</span>
     <span class="kw">pub</span> <span class="ident">tx_hash</span>: <span class="ident">H256</span>,
+    <span class="doccomment">/// The index of this cell in the transaction. Based on the context, this is either input index</span>
+    <span class="doccomment">/// or output index.</span>
     <span class="kw">pub</span> <span class="ident">index</span>: <span class="ident">Uint64</span>,
 }
 
+<span class="doccomment">/// Cell script lock hash index state.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LockHashIndexState</span> {
+    <span class="doccomment">/// The script lock hash.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This index will index cells which lock script hash matches.</span>
     <span class="kw">pub</span> <span class="ident">lock_hash</span>: <span class="ident">H256</span>,
+    <span class="doccomment">/// The max block number this index has already scanned.</span>
     <span class="kw">pub</span> <span class="ident">block_number</span>: <span class="ident">BlockNumber</span>,
+    <span class="doccomment">/// The hash of the block with the max block number that this index has already scanned.</span>
     <span class="kw">pub</span> <span class="ident">block_hash</span>: <span class="ident">H256</span>,
 }
 
+<span class="doccomment">/// Accumulated capacity of a set of cells.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">LockHashCapacity</span> {
+    <span class="doccomment">/// Total capacity of all the cells in the set.</span>
     <span class="kw">pub</span> <span class="ident">capacity</span>: <span class="ident">Capacity</span>,
+    <span class="doccomment">/// Count of cells in the set.</span>
     <span class="kw">pub</span> <span class="ident">cells_count</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// This information is calculated when the max block number in the chain is `block_number`.</span>
     <span class="kw">pub</span> <span class="ident">block_number</span>: <span class="ident">BlockNumber</span>,
 }
 </pre></div>
