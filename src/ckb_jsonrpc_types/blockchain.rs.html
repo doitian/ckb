@@ -1182,6 +1182,11 @@
 <span id="1182">1182</span>
 <span id="1183">1183</span>
 <span id="1184">1184</span>
+<span id="1185">1185</span>
+<span id="1186">1186</span>
+<span id="1187">1187</span>
+<span id="1188">1188</span>
+<span id="1189">1189</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">bytes</span>::<span class="ident">JsonBytes</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{
@@ -1981,12 +1986,17 @@
     }
 }
 
+<span class="doccomment">/// The JSON view of a Block used as parameter.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Block</span> {
+    <span class="doccomment">/// The block header.</span>
     <span class="kw">pub</span> <span class="ident">header</span>: <span class="ident">Header</span>,
+    <span class="doccomment">/// The uncles blocks in the block body.</span>
     <span class="kw">pub</span> <span class="ident">uncles</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">UncleBlock</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The transactions in the block body.</span>
     <span class="kw">pub</span> <span class="ident">transactions</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Transaction</span><span class="op">&gt;</span>,
+    <span class="doccomment">/// The proposal IDs in the block body.</span>
     <span class="kw">pub</span> <span class="ident">proposals</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">ProposalShortId</span><span class="op">&gt;</span>,
 }
 
