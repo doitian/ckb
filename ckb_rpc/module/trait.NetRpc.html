@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `NetRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, NetRpc"><title>ckb_rpc::module::NetRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait NetRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.add_node">add_node</a><a href="#tymethod.get_banned_addresses">get_banned_addresses</a><a href="#tymethod.get_peers">get_peers</a><a href="#tymethod.local_node_info">local_node_info</a><a href="#tymethod.remove_node">remove_node</a><a href="#tymethod.set_ban">set_ban</a><a href="#tymethod.set_network_active">set_network_active</a><a href="#tymethod.sync_state">sync_state</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'NetRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/net.rs.html#17-56' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>NetRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait NetRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `NetRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, NetRpc"><title>ckb_rpc::module::NetRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait NetRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.add_node">add_node</a><a href="#tymethod.get_banned_addresses">get_banned_addresses</a><a href="#tymethod.get_peers">get_peers</a><a href="#tymethod.local_node_info">local_node_info</a><a href="#tymethod.remove_node">remove_node</a><a href="#tymethod.set_ban">set_ban</a><a href="#tymethod.set_network_active">set_network_active</a><a href="#tymethod.sync_state">sync_state</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'NetRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/net.rs.html#18-472' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>NetRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait NetRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
     fn <a href='#tymethod.local_node_info' class='fnname'>local_node_info</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.LocalNode.html" title="struct ckb_jsonrpc_types::net::LocalNode">LocalNode</a>&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_peers' class='fnname'>get_peers</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.RemoteNode.html" title="struct ckb_jsonrpc_types::net::RemoteNode">RemoteNode</a>&gt;&gt;;
 <div class='item-spacer'></div>    fn <a href='#tymethod.get_banned_addresses' class='fnname'>get_banned_addresses</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.BannedAddr.html" title="struct ckb_jsonrpc_types::net::BannedAddr">BannedAddr</a>&gt;&gt;;
@@ -9,8 +9,371 @@
 <div class='item-spacer'></div>    fn <a href='#tymethod.remove_node' class='fnname'>remove_node</a>(&amp;self, peer_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;;
 
     fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt; { ... }
-}</pre></div>
-            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.local_node_info' class='method'><code id='local_node_info.v'>fn <a href='#tymethod.local_node_info' class='fnname'>local_node_info</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.LocalNode.html" title="struct ckb_jsonrpc_types::net::LocalNode">LocalNode</a>&gt;</code></h3><h3 id='tymethod.get_peers' class='method'><code id='get_peers.v'>fn <a href='#tymethod.get_peers' class='fnname'>get_peers</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.RemoteNode.html" title="struct ckb_jsonrpc_types::net::RemoteNode">RemoteNode</a>&gt;&gt;</code></h3><h3 id='tymethod.get_banned_addresses' class='method'><code id='get_banned_addresses.v'>fn <a href='#tymethod.get_banned_addresses' class='fnname'>get_banned_addresses</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.BannedAddr.html" title="struct ckb_jsonrpc_types::net::BannedAddr">BannedAddr</a>&gt;&gt;</code></h3><h3 id='tymethod.set_ban' class='method'><code id='set_ban.v'>fn <a href='#tymethod.set_ban' class='fnname'>set_ban</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;command: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;ban_time: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Timestamp.html" title="type ckb_jsonrpc_types::primitive::Timestamp">Timestamp</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;absolute: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;reason: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;<br>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><h3 id='tymethod.sync_state' class='method'><code id='sync_state.v'>fn <a href='#tymethod.sync_state' class='fnname'>sync_state</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.SyncState.html" title="struct ckb_jsonrpc_types::net::SyncState">SyncState</a>&gt;</code></h3><h3 id='tymethod.set_network_active' class='method'><code id='set_network_active.v'>fn <a href='#tymethod.set_network_active' class='fnname'>set_network_active</a>(&amp;self, state: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><h3 id='tymethod.add_node' class='method'><code id='add_node.v'>fn <a href='#tymethod.add_node' class='fnname'>add_node</a>(&amp;self, peer_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><h3 id='tymethod.remove_node' class='method'><code id='remove_node.v'>fn <a href='#tymethod.remove_node' class='fnname'>remove_node</a>(&amp;self, peer_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3></div><span class='loading-content'>Loading content...</span>
+}</pre></div><div class='docblock'><p>RPC Module Net for P2P network.</p>
+</div>
+            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.local_node_info' class='method'><code id='local_node_info.v'>fn <a href='#tymethod.local_node_info' class='fnname'>local_node_info</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.LocalNode.html" title="struct ckb_jsonrpc_types::net::LocalNode">LocalNode</a>&gt;</code></h3><div class='docblock'><p>Returns the local node information.</p>
+<p>The local node means the node itself which is serving the RPC.</p>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;local_node_info&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;active&quot;: true,
+    &quot;addresses&quot;: [
+      {
+        &quot;address&quot;: &quot;/ip4/192.168.0.2/tcp/8112/p2p/QmTRHCdrRtgUzYLNCin69zEvPvLYdxUZLLfLYyHVY3DZAS&quot;,
+        &quot;score&quot;: &quot;0xff&quot;
+      },
+      {
+        &quot;address&quot;: &quot;/ip4/0.0.0.0/tcp/8112/p2p/QmTRHCdrRtgUzYLNCin69zEvPvLYdxUZLLfLYyHVY3DZAS&quot;,
+        &quot;score&quot;: &quot;0x1&quot;
+      }
+    ],
+    &quot;connections&quot;: &quot;0xb&quot;,
+    &quot;node_id&quot;: &quot;QmTRHCdrRtgUzYLNCin69zEvPvLYdxUZLLfLYyHVY3DZAS&quot;,
+    &quot;protocols&quot;: [
+      {
+        &quot;id&quot;: &quot;0x0&quot;,
+        &quot;name&quot;: &quot;/ckb/ping&quot;,
+        &quot;support_versions&quot;: [
+          &quot;0.0.1&quot;
+        ]
+      },
+      {
+        &quot;id&quot;: &quot;0x1&quot;,
+        &quot;name&quot;: &quot;/ckb/discovery&quot;,
+        &quot;support_versions&quot;: [
+          &quot;0.0.1&quot;
+        ]
+      }
+    ],
+    &quot;version&quot;: &quot;0.34.0 (f37f598 2020-07-17)&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.get_peers' class='method'><code id='get_peers.v'>fn <a href='#tymethod.get_peers' class='fnname'>get_peers</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.RemoteNode.html" title="struct ckb_jsonrpc_types::net::RemoteNode">RemoteNode</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns the connected peers information.</p>
+<h2 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_peers&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;addresses&quot;: [
+        {
+          &quot;address&quot;: &quot;/ip6/::ffff:18.185.102.19/tcp/8115/p2p/QmXwUgF48ULy6hkgfqrEwEfuHW7WyWyWauueRDAYQHNDfN&quot;,
+          &quot;score&quot;: &quot;0x64&quot;
+        },
+        {
+          &quot;address&quot;: &quot;/ip4/18.185.102.19/tcp/8115/p2p/QmXwUgF48ULy6hkgfqrEwEfuHW7WyWyWauueRDAYQHNDfN&quot;,
+          &quot;score&quot;: &quot;0x64&quot;
+        }
+      ],
+      &quot;connected_duration&quot;: &quot;0x2f&quot;,
+      &quot;is_outbound&quot;: true,
+      &quot;last_ping_duration&quot;: &quot;0x1a&quot;,
+      &quot;node_id&quot;: &quot;QmXwUgF48ULy6hkgfqrEwEfuHW7WyWyWauueRDAYQHNDfN&quot;,
+      &quot;protocols&quot;: [
+        {
+          &quot;id&quot;: &quot;0x4&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x2&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x1&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x64&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x6e&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x66&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x65&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x0&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        }
+      ],
+      &quot;sync_state&quot;: {
+        &quot;best_known_header_hash&quot;: null,
+        &quot;best_known_header_number&quot;: null,
+        &quot;can_fetch_count&quot;: &quot;0x80&quot;,
+        &quot;inflight_count&quot;: &quot;0xa&quot;,
+        &quot;last_common_header_hash&quot;: null,
+        &quot;last_common_header_number&quot;: null,
+        &quot;unknown_header_list_size&quot;: &quot;0x20&quot;
+      },
+      &quot;version&quot;: &quot;0.34.0 (f37f598 2020-07-17)&quot;
+    },
+    {
+      &quot;addresses&quot;: [
+        {
+          &quot;address&quot;: &quot;/ip4/174.80.182.60/tcp/52965/p2p/QmVTMd7SEXfxS5p4EEM5ykTe1DwWWVewEM3NwjLY242vr2&quot;,
+          &quot;score&quot;: &quot;0x1&quot;
+        }
+      ],
+      &quot;connected_duration&quot;: &quot;0x95&quot;,
+      &quot;is_outbound&quot;: true,
+      &quot;last_ping_duration&quot;: &quot;0x41&quot;,
+      &quot;node_id&quot;: &quot;QmSrkzhdBMmfCGx8tQGwgXxzBg8kLtX8qMcqECMuKWsxDV&quot;,
+      &quot;protocols&quot;: [
+        {
+          &quot;id&quot;: &quot;0x0&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x2&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x6e&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x66&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x1&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x65&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x64&quot;,
+          &quot;version&quot;: &quot;1&quot;
+        },
+        {
+          &quot;id&quot;: &quot;0x4&quot;,
+          &quot;version&quot;: &quot;0.0.1&quot;
+        }
+      ],
+      &quot;sync_state&quot;: {
+        &quot;best_known_header_hash&quot;: &quot;0x2157c72b3eddd41a7a14c361173cd22ef27d7e0a29eda2e511ee0b3598c0b895&quot;,
+        &quot;best_known_header_number&quot;: &quot;0xdb835&quot;,
+        &quot;can_fetch_count&quot;: &quot;0x80&quot;,
+        &quot;inflight_count&quot;: &quot;0xa&quot;,
+        &quot;last_common_header_hash&quot;: &quot;0xc63026bd881d880bb142c855dc8153187543245f0a94391c831c75df31f263c4&quot;,
+        &quot;last_common_header_number&quot;: &quot;0x4dc08&quot;,
+        &quot;unknown_header_list_size&quot;: &quot;0x1f&quot;
+      },
+      &quot;version&quot;: &quot;0.30.1 (5cc1b75 2020-03-23)&quot;
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.get_banned_addresses' class='method'><code id='get_banned_addresses.v'>fn <a href='#tymethod.get_banned_addresses' class='fnname'>get_banned_addresses</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/vec/struct.Vec.html" title="struct alloc::vec::Vec">Vec</a>&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.BannedAddr.html" title="struct ckb_jsonrpc_types::net::BannedAddr">BannedAddr</a>&gt;&gt;</code></h3><div class='docblock'><p>Returns all banned IPs/Subnets.</p>
+<h2 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;get_banned_addresses&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: [
+    {
+      &quot;address&quot;: &quot;192.168.0.2/32&quot;,
+      &quot;ban_reason&quot;: &quot;&quot;,
+      &quot;ban_until&quot;: &quot;0x1ac89236180&quot;,
+      &quot;created_at&quot;: &quot;0x16bde533338&quot;
+    }
+  ]
+}
+</code></pre>
+</div><h3 id='tymethod.set_ban' class='method'><code id='set_ban.v'>fn <a href='#tymethod.set_ban' class='fnname'>set_ban</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;command: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;ban_time: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="type" href="../../ckb_jsonrpc_types/primitive/type.Timestamp.html" title="type ckb_jsonrpc_types::primitive::Timestamp">Timestamp</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;absolute: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;reason: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;<br>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><div class='docblock'><p>Inserts or deletes an IP/Subnet from the banned list</p>
+<h2 id="params" class="section-header"><a href="#params">Params</a></h2>
+<ul>
+<li><code>address</code> - The IP/Subnet with an optional netmask (default is /32 = single IP). Examples:
+<ul>
+<li>&quot;192.168.0.2&quot; bans a single IP</li>
+<li>&quot;192.168.0.0/24&quot; bans IP from &quot;192.168.0.0&quot; to &quot;192.168.0.255&quot;.</li>
+</ul>
+</li>
+<li><code>command</code> - <code>insert</code> to insert an IP/Subnet to the list, <code>delete</code> to delete an IP/Subnet from the list.</li>
+<li><code>ban_time</code> - Time in milliseconds how long (or until when if [absolute] is set) the IP is banned, optional parameter, null means using the default time of 24h</li>
+<li><code>absolute</code> - If set, the <code>ban_time</code> must be an absolute timestamp in milliseconds since epoch, optional parameter.</li>
+<li><code>reason</code> - Ban reason, optional parameter.</li>
+</ul>
+<h2 id="examples-3" class="section-header"><a href="#examples-3">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;set_ban&quot;,
+  &quot;params&quot;: [
+    &quot;192.168.0.2&quot;,
+    &quot;insert&quot;,
+    &quot;0x1ac89236180&quot;,
+    true,
+    &quot;set_ban example&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+</div><h3 id='tymethod.sync_state' class='method'><code id='sync_state.v'>fn <a href='#tymethod.sync_state' class='fnname'>sync_state</a>(&amp;self) -&gt; Result&lt;<a class="struct" href="../../ckb_jsonrpc_types/net/struct.SyncState.html" title="struct ckb_jsonrpc_types::net::SyncState">SyncState</a>&gt;</code></h3><div class='docblock'><p>Returns chain synchronization state of this node.</p>
+<h2 id="examples-4" class="section-header"><a href="#examples-4">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;sync_state&quot;,
+  &quot;params&quot;: []
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: {
+    &quot;best_known_block_number&quot;: &quot;0x248623&quot;,
+    &quot;best_known_block_timestamp&quot;: &quot;0x173943c36e4&quot;,
+    &quot;fast_time&quot;: &quot;0x3e8&quot;,
+    &quot;ibd&quot;: false,
+    &quot;inflight_blocks_count&quot;: &quot;0x0&quot;,
+    &quot;low_time&quot;: &quot;0x5dc&quot;,
+    &quot;normal_time&quot;: &quot;0x4e2&quot;,
+    &quot;orphan_blocks_count&quot;: &quot;0x0&quot;
+  }
+}
+</code></pre>
+</div><h3 id='tymethod.set_network_active' class='method'><code id='set_network_active.v'>fn <a href='#tymethod.set_network_active' class='fnname'>set_network_active</a>(&amp;self, state: <a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><div class='docblock'><p>Disable/enable all p2p network activity</p>
+<h2 id="params-1" class="section-header"><a href="#params-1">Params</a></h2>
+<ul>
+<li><code>state</code> - true to enable networking, false to disable</li>
+</ul>
+<h2 id="examples-5" class="section-header"><a href="#examples-5">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;set_network_active&quot;,
+  &quot;params&quot;: [
+    false
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+</div><h3 id='tymethod.add_node' class='method'><code id='add_node.v'>fn <a href='#tymethod.add_node' class='fnname'>add_node</a>(&amp;self, peer_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>, address: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><div class='docblock'><p>Attempts to add a node to the peers list and try connecting to it.</p>
+<h2 id="params-2" class="section-header"><a href="#params-2">Params</a></h2>
+<ul>
+<li><code>peer_id</code> - The node id of node.</li>
+<li><code>address</code> - The address of node</li>
+</ul>
+<p>The full P2P address is usually displayed as <code>address/peer_id</code>, for example in the log</p>
+<pre><code class="language-text">2020-09-16 15:31:35.191 +08:00 NetworkRuntime INFO ckb_network::network
+  Listen on address: /ip4/192.168.2.100/tcp/8114/QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS
+</code></pre>
+<p>And in RPC <code>local_node_info</code>:</p>
+<pre><code class="language-json">{
+  &quot;addresses&quot;: [
+    {
+      &quot;address&quot;: &quot;/ip4/192.168.2.100/tcp/8114/QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS&quot;,
+      &quot;score&quot;: &quot;0xff&quot;
+    }
+  ]
+}
+</code></pre>
+<p>In both of these examples,</p>
+<ul>
+<li><code>peer_id</code> is <code>QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS</code>,</li>
+<li>and <code>address</code> is <code>/ip4/192.168.2.100/tcp/8114</code></li>
+</ul>
+<h2 id="examples-6" class="section-header"><a href="#examples-6">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;add_node&quot;,
+  &quot;params&quot;: [
+    &quot;QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS&quot;,
+    &quot;/ip4/192.168.2.100/tcp/8114&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+</div><h3 id='tymethod.remove_node' class='method'><code id='remove_node.v'>fn <a href='#tymethod.remove_node' class='fnname'>remove_node</a>(&amp;self, peer_id: <a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.unit.html">()</a>&gt;</code></h3><div class='docblock'><p>Attempts to remove a node from the peers list and try disconnecting from it.</p>
+<h2 id="params-3" class="section-header"><a href="#params-3">Params</a></h2>
+<ul>
+<li><code>peer_id</code> - The peer id of node.</li>
+</ul>
+<p>This is the last part of a full P2P address. For example, in address
+&quot;/ip4/192.168.2.100/tcp/8114/QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS&quot;, the <code>peer_id</code>
+is <code>QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS</code>.</p>
+<h2 id="examples-7" class="section-header"><a href="#examples-7">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;remove_node&quot;,
+  &quot;params&quot;: [
+    &quot;QmUsZHPbjjzU627UZFt4k8j6ycEcNvXRnVGxCPKqwbAfQS&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: null
+}
+</code></pre>
+</div></div><span class='loading-content'>Loading content...</span>
             <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>&lt;M:&nbsp;Metadata&gt;(self) -&gt; IoDelegate&lt;Self, M&gt;</code></h3><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
 </div></div><span class='loading-content'>Loading content...</span>
             <h2 id='implementors' class='small-section-header'>Implementors<a href='#implementors' class='anchor'></a></h2><div class='item-list' id='implementors-list'></div><span class='loading-content'>Loading content...</span><script type="text/javascript" src="../../implementors/ckb_rpc/module/trait.NetRpc.js" async></script></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_rpc";</script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
