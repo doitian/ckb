@@ -39,28 +39,90 @@
 <span id="39">39</span>
 <span id="40">40</span>
 <span id="41">41</span>
+<span id="42">42</span>
+<span id="43">43</span>
+<span id="44">44</span>
+<span id="45">45</span>
+<span id="46">46</span>
+<span id="47">47</span>
+<span id="48">48</span>
+<span id="49">49</span>
+<span id="50">50</span>
+<span id="51">51</span>
+<span id="52">52</span>
+<span id="53">53</span>
+<span id="54">54</span>
+<span id="55">55</span>
+<span id="56">56</span>
+<span id="57">57</span>
+<span id="58">58</span>
+<span id="59">59</span>
+<span id="60">60</span>
+<span id="61">61</span>
+<span id="62">62</span>
+<span id="63">63</span>
+<span id="64">64</span>
+<span id="65">65</span>
+<span id="66">66</span>
+<span id="67">67</span>
+<span id="68">68</span>
+<span id="69">69</span>
+<span id="70">70</span>
+<span id="71">71</span>
+<span id="72">72</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">BlockNumber</span>, <span class="ident">Timestamp</span>, <span class="ident">Uint64</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::<span class="ident">H256</span>;
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
+<span class="doccomment">/// Transaction pool information.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TxPoolInfo</span> {
+    <span class="doccomment">/// The associated chain tip block hash.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Transaction pool is stateful. It manages the transactions which are valid to be commit</span>
+    <span class="doccomment">/// after this block.</span>
     <span class="kw">pub</span> <span class="ident">tip_hash</span>: <span class="ident">H256</span>,
+    <span class="doccomment">/// The block number of the block `tip_hash`.</span>
     <span class="kw">pub</span> <span class="ident">tip_number</span>: <span class="ident">BlockNumber</span>,
+    <span class="doccomment">/// Count of transactions in the pending state.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The pending transactions must be proposed in a new block first.</span>
     <span class="kw">pub</span> <span class="ident">pending</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Count of transactions in the proposed state.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The proposed transactions are ready to be commit in the new block after the block</span>
+    <span class="doccomment">/// `tip_hash`.</span>
     <span class="kw">pub</span> <span class="ident">proposed</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Count of orphan transactions.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// An orphan transaction has an input cell from the transaction which is neither in the chain</span>
+    <span class="doccomment">/// nor in the transaction pool.</span>
     <span class="kw">pub</span> <span class="ident">orphan</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Total count of transactions in the pool of all the different kinds of states.</span>
     <span class="kw">pub</span> <span class="ident">total_tx_size</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Total consumed VM cycles of all the transactions in the pool.</span>
     <span class="kw">pub</span> <span class="ident">total_tx_cycles</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Fee rate threshold. The pool rejects transactions which fee rate is below this threshold.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The unit is Shannons per 1000 bytes transaction serialization size in block.</span>
     <span class="kw">pub</span> <span class="ident">min_fee_rate</span>: <span class="ident">Uint64</span>,
+    <span class="doccomment">/// Last updated time. This is the Unix timestamp in milliseconds.</span>
     <span class="kw">pub</span> <span class="ident">last_txs_updated_at</span>: <span class="ident">Timestamp</span>,
 }
 
+<span class="doccomment">/// Transaction output validators that prevent common mistakes.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">rename_all</span> <span class="op">=</span> <span class="string">&quot;snake_case&quot;</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">OutputsValidator</span> {
+    <span class="doccomment">/// &quot;default&quot;: The default validator which restricts the lock script and type script usage.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The default validator only allows outputs (a.k.a., cells) that</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * use either the secp256k1 or the secp256k1 multisig bundled in the genesis block via type script hash as the lock script,</span>
+    <span class="doccomment">/// * and the type script is either empty or DAO.</span>
     <span class="ident">Default</span>,
+    <span class="doccomment">/// &quot;passthrough&quot;: bypass the validator, thus allow any kind of transaction outputs.</span>
     <span class="ident">Passthrough</span>,
 }
 
