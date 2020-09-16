@@ -234,13 +234,13 @@
 <span id="234">234</span>
 <span id="235">235</span>
 </pre><div class="example-wrap"><pre class="rust ">
+<span class="attribute">#![<span class="ident">allow</span>(<span class="ident">deprecated</span>)]</span>
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">module</span>::<span class="ident">SubscriptionSession</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">module</span>::{
     <span class="ident">AlertRpc</span>, <span class="ident">AlertRpcImpl</span>, <span class="ident">ChainRpc</span>, <span class="ident">ChainRpcImpl</span>, <span class="ident">DebugRpc</span>, <span class="ident">DebugRpcImpl</span>, <span class="ident">ExperimentRpc</span>,
     <span class="ident">ExperimentRpcImpl</span>, <span class="ident">IndexerRpc</span>, <span class="ident">IndexerRpcImpl</span>, <span class="ident">IntegrationTestRpc</span>, <span class="ident">IntegrationTestRpcImpl</span>,
-    <span class="ident">MinerRpc</span>, <span class="ident">MinerRpcImpl</span>, <span class="ident">NetworkRpc</span>, <span class="ident">NetworkRpcImpl</span>, <span class="ident">PoolRpc</span>, <span class="ident">PoolRpcImpl</span>, <span class="ident">StatsRpc</span>,
-    <span class="ident">StatsRpcImpl</span>,
+    <span class="ident">MinerRpc</span>, <span class="ident">MinerRpcImpl</span>, <span class="ident">NetRpc</span>, <span class="ident">NetRpcImpl</span>, <span class="ident">PoolRpc</span>, <span class="ident">PoolRpcImpl</span>, <span class="ident">StatsRpc</span>, <span class="ident">StatsRpcImpl</span>,
 };
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">IoHandler</span>;
 <span class="kw">use</span> <span class="ident">ckb_app_config</span>::<span class="ident">IndexerConfig</span>;
@@ -326,7 +326,7 @@
         <span class="ident">network_controller</span>: <span class="ident">NetworkController</span>,
         <span class="ident">sync_shared</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">SyncShared</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="self">Self</span> {
-        <span class="kw">let</span> <span class="ident">rpc_methods</span> <span class="op">=</span> <span class="ident">NetworkRpcImpl</span> {
+        <span class="kw">let</span> <span class="ident">rpc_methods</span> <span class="op">=</span> <span class="ident">NetRpcImpl</span> {
             <span class="ident">network_controller</span>,
             <span class="ident">sync_shared</span>,
         }

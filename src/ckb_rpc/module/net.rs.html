@@ -291,7 +291,7 @@
 <span class="kw">const</span> <span class="ident">DEFAULT_BAN_DURATION</span>: <span class="ident">u64</span> <span class="op">=</span> <span class="number">24</span> <span class="op">*</span> <span class="number">60</span> <span class="op">*</span> <span class="number">60</span> <span class="op">*</span> <span class="number">1000</span>; <span class="comment">// 1 day</span>
 
 <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">server</span>)]</span>
-<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">NetworkRpc</span> {
+<span class="kw">pub</span> <span class="kw">trait</span> <span class="ident">NetRpc</span> {
     <span class="comment">// curl -d &#39;{&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;:&quot;local_node_info&quot;,&quot;params&quot;: []}&#39; -H &#39;content-type:application/json&#39; &#39;http://localhost:8114&#39;</span>
     <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;local_node_info&quot;</span>)]</span>
     <span class="kw">fn</span> <span class="ident">local_node_info</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">LocalNode</span><span class="op">&gt;</span>;
@@ -332,12 +332,12 @@
     <span class="kw">fn</span> <span class="ident">remove_node</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">peer_id</span>: <span class="ident">String</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span>()<span class="op">&gt;</span>;
 }
 
-<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">NetworkRpcImpl</span> {
+<span class="kw">pub</span>(<span class="kw">crate</span>) <span class="kw">struct</span> <span class="ident">NetRpcImpl</span> {
     <span class="kw">pub</span> <span class="ident">network_controller</span>: <span class="ident">NetworkController</span>,
     <span class="kw">pub</span> <span class="ident">sync_shared</span>: <span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">SyncShared</span><span class="op">&gt;</span>,
 }
 
-<span class="kw">impl</span> <span class="ident">NetworkRpc</span> <span class="kw">for</span> <span class="ident">NetworkRpcImpl</span> {
+<span class="kw">impl</span> <span class="ident">NetRpc</span> <span class="kw">for</span> <span class="ident">NetRpcImpl</span> {
     <span class="kw">fn</span> <span class="ident">local_node_info</span>(<span class="kw-2">&amp;</span><span class="self">self</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">LocalNode</span><span class="op">&gt;</span> {
         <span class="prelude-val">Ok</span>(<span class="ident">LocalNode</span> {
             <span class="ident">version</span>: <span class="self">self</span>.<span class="ident">network_controller</span>.<span class="ident">version</span>().<span class="ident">to_owned</span>(),
