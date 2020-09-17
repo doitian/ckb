@@ -127,6 +127,11 @@
 <span id="127">127</span>
 <span id="128">128</span>
 <span id="129">129</span>
+<span id="130">130</span>
+<span id="131">131</span>
+<span id="132">132</span>
+<span id="133">133</span>
+<span id="134">134</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">bytes</span>::<span class="ident">JsonBytes</span>, <span class="ident">Timestamp</span>, <span class="ident">Uint32</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::{<span class="ident">packed</span>, <span class="ident">prelude</span>::<span class="kw-2">*</span>};
@@ -186,11 +191,16 @@
     <span class="kw">pub</span> <span class="ident">signatures</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">JsonBytes</span><span class="op">&gt;</span>,
 }
 
+<span class="doccomment">/// An alert sent by RPC `send_alert`.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">AlertMessage</span> {
+    <span class="doccomment">/// The unique alert ID.</span>
     <span class="kw">pub</span> <span class="ident">id</span>: <span class="ident">AlertId</span>,
+    <span class="doccomment">/// Alerts are sorted by priority, highest first.</span>
     <span class="kw">pub</span> <span class="ident">priority</span>: <span class="ident">AlertPriority</span>,
+    <span class="doccomment">/// The alert is expired after this timestamp.</span>
     <span class="kw">pub</span> <span class="ident">notice_until</span>: <span class="ident">Timestamp</span>,
+    <span class="doccomment">/// Alert message.</span>
     <span class="kw">pub</span> <span class="ident">message</span>: <span class="ident">String</span>,
 }
 

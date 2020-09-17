@@ -17,24 +17,52 @@
 <span id="17">17</span>
 <span id="18">18</span>
 <span id="19">19</span>
+<span id="20">20</span>
+<span id="21">21</span>
+<span id="22">22</span>
+<span id="23">23</span>
+<span id="24">24</span>
+<span id="25">25</span>
+<span id="26">26</span>
+<span id="27">27</span>
+<span id="28">28</span>
+<span id="29">29</span>
+<span id="30">30</span>
+<span id="31">31</span>
+<span id="32">32</span>
+<span id="33">33</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">AlertMessage</span>, <span class="ident">EpochNumber</span>, <span class="ident">Timestamp</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::<span class="ident">U256</span>;
 <span class="kw">use</span> <span class="ident">serde</span>::{<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>};
 
+<span class="doccomment">/// Chain information.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Deserialize</span>, <span class="ident">Serialize</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">ChainInfo</span> {
-    <span class="comment">// network name</span>
+    <span class="doccomment">/// The network name.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Examples:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * &quot;ckb&quot; - Lina the mainnet.</span>
+    <span class="doccomment">/// * &quot;ckb_testnet&quot; - Aggron the testnet.</span>
     <span class="kw">pub</span> <span class="ident">chain</span>: <span class="ident">String</span>,
-    <span class="comment">// median time for the current tip block</span>
+    <span class="doccomment">/// The median time of the last 37 blocks.</span>
     <span class="kw">pub</span> <span class="ident">median_time</span>: <span class="ident">Timestamp</span>,
-    <span class="comment">// the current epoch number</span>
+    <span class="doccomment">/// Current epoch number.</span>
     <span class="kw">pub</span> <span class="ident">epoch</span>: <span class="ident">EpochNumber</span>,
-    <span class="comment">// the current difficulty</span>
+    <span class="doccomment">/// Current difficulty.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The 256-bit unsigned integer type encoded as the 0x-prefixed hex string in JSON.</span>
     <span class="kw">pub</span> <span class="ident">difficulty</span>: <span class="ident">U256</span>,
-    <span class="comment">// estimate of whether this node is in InitialBlockDownload mode</span>
+    <span class="doccomment">/// Whether the local node is in IBD, Initial Block Download.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// When a node starts and its chain tip timestamp is far behind the wall clock, it will enter</span>
+    <span class="doccomment">/// the IBD until it catches up the synchronization.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// During IBD, the local node only synchronize the chain with one selected remote node and</span>
+    <span class="doccomment">/// stop responding most P2P requests.</span>
     <span class="kw">pub</span> <span class="ident">is_initial_block_download</span>: <span class="ident">bool</span>,
-    <span class="comment">// any network and blockchain warnings</span>
+    <span class="doccomment">/// Active alerts stored in the local node.</span>
     <span class="kw">pub</span> <span class="ident">alerts</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">AlertMessage</span><span class="op">&gt;</span>,
 }
 </pre></div>
