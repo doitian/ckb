@@ -1,12 +1,184 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `SubscriptionRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, SubscriptionRpc"><title>ckb_rpc::module::SubscriptionRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait SubscriptionRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Metadata">Metadata</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.subscribe">subscribe</a><a href="#tymethod.unsubscribe">unsubscribe</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'SubscriptionRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/subscription.rs.html#52-60' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>SubscriptionRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait SubscriptionRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="API documentation for the Rust `SubscriptionRpc` trait in crate `ckb_rpc`."><meta name="keywords" content="rust, rustlang, rust-lang, SubscriptionRpc"><title>ckb_rpc::module::SubscriptionRpc - Rust</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css"><link rel="stylesheet" type="text/css" href="../../light.css" id="themeStyle"><script src="../../storage.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="shortcut icon" href="../../favicon.ico"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc trait"><!--[if lte IE 8]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu">&#9776;</div><a href='../../ckb_rpc/index.html'><div class='logo-container'><img src='../../rust-logo.png' alt='logo'></div></a><p class='location'>Trait SubscriptionRpc</p><div class="sidebar-elems"><div class="block items"><a class="sidebar-title" href="#associated-types">Associated Types</a><div class="sidebar-links"><a href="#associatedtype.Metadata">Metadata</a></div><a class="sidebar-title" href="#required-methods">Required Methods</a><div class="sidebar-links"><a href="#tymethod.subscribe">subscribe</a><a href="#tymethod.unsubscribe">unsubscribe</a></div><a class="sidebar-title" href="#provided-methods">Provided Methods</a><div class="sidebar-links"><a href="#method.to_delegate">to_delegate</a></div><a class="sidebar-title" href="#implementors">Implementors</a></div><p class='location'><a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a></p><script>window.sidebarCurrent = {name: 'SubscriptionRpc', ty: 'trait', relpath: ''};</script><script defer src="sidebar-items.js"></script></div></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!"><img src="../../brush.svg" width="18" alt="Pick another theme!"></button><div id="theme-choices"></div></div><script src="../../theme.js"></script><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><a id="settings-menu" href="../../settings.html"><img src="../../wheel.svg" width="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><h1 class='fqn'><span class='out-of-band'><span id='render-detail'><a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">[<span class='inner'>&#x2212;</span>]</a></span><a class='srclink' href='../../src/ckb_rpc/module/subscription.rs.html#88-270' title='goto source code'>[src]</a></span><span class='in-band'>Trait <a href='../index.html'>ckb_rpc</a>::<wbr><a href='index.html'>module</a>::<wbr><a class="trait" href=''>SubscriptionRpc</a></span></h1><div class="docblock type-decl hidden-by-usual-hider"><pre class='rust trait'>pub trait SubscriptionRpc: <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sized.html" title="trait core::marker::Sized">Sized</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Send.html" title="trait core::marker::Send">Send</a> + <a class="trait" href="https://doc.rust-lang.org/nightly/core/marker/trait.Sync.html" title="trait core::marker::Sync">Sync</a> + 'static {
     type <a href='#associatedtype.Metadata' class="type">Metadata</a>: PubSubMetadata;
     fn <a href='#tymethod.subscribe' class='fnname'>subscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meta: Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;subscriber: Subscriber&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;topic: Topic<br>&nbsp;&nbsp;&nbsp;&nbsp;);
 <div class='item-spacer'></div>    fn <a href='#tymethod.unsubscribe' class='fnname'>unsubscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;meta: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id: SubscriptionId<br>&nbsp;&nbsp;&nbsp;&nbsp;) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;;
 
     fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>(self) -&gt; IoDelegate&lt;Self, Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>&gt; { ... }
-}</pre></div>
+}</pre></div><div class='docblock'><p>RPC Module Subscription that CKB node will push new messages to subscribers.</p>
+<p>RPC subscriptions require a full duplex connection. CKB offers such connections in the form of
+TCP (enable with rpc.tcp_listen_address configuration option) and WebSocket (enable with
+rpc.ws_listen_address).</p>
+<h2 id="examples" class="section-header"><a href="#examples">Examples</a></h2>
+<p>TCP RPC subscription:</p>
+<pre><code class="language-text">telnet localhost 18114
+&gt; {&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;subscribe&quot;, &quot;params&quot;: [&quot;new_tip_header&quot;]}
+&lt; {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;result&quot;:0,&quot;id&quot;:2}
+&lt; {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;subscribe&quot;,&quot;params&quot;:{&quot;result&quot;:&quot;...block header json...&quot;,
+&quot;subscription&quot;:0}}
+&lt; {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;subscribe&quot;,&quot;params&quot;:{&quot;result&quot;:&quot;...block header json...&quot;,
+&quot;subscription&quot;:0}}
+&lt; ...
+&gt; {&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;unsubscribe&quot;, &quot;params&quot;: [0]}
+&lt; {&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;result&quot;:true,&quot;id&quot;:2}
+</code></pre>
+<p>WebSocket RPC subscription:</p>
+<pre><code class="language-javascript">let socket = new WebSocket(&quot;ws://localhost:28114&quot;)
+
+socket.onmessage = function(event) {
+  console.log(`Data received from server: ${event.data}`);
+}
+
+socket.send(`{&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;subscribe&quot;, &quot;params&quot;: [&quot;new_tip_header&quot;]}`)
+
+socket.send(`{&quot;id&quot;: 2, &quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;method&quot;: &quot;unsubscribe&quot;, &quot;params&quot;: [0]}`)
+</code></pre>
+</div>
             <h2 id='associated-types' class='small-section-header'>Associated Types<a href='#associated-types' class='anchor'></a></h2><div class='methods'><h3 id='associatedtype.Metadata' class='method'><code id='Metadata.t'>type <a href='#associatedtype.Metadata' class="type">Metadata</a>: PubSubMetadata</code></h3></div><span class='loading-content'>Loading content...</span>
-            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.subscribe' class='method'><code id='subscribe.v'>fn <a href='#tymethod.subscribe' class='fnname'>subscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;meta: Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;subscriber: Subscriber&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;topic: Topic<br>)</code></h3><h3 id='tymethod.unsubscribe' class='method'><code id='unsubscribe.v'>fn <a href='#tymethod.unsubscribe' class='fnname'>unsubscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;meta: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;id: SubscriptionId<br>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></h3></div><span class='loading-content'>Loading content...</span>
+            <h2 id='required-methods' class='small-section-header'>Required methods<a href='#required-methods' class='anchor'></a></h2><div class='methods'><h3 id='tymethod.subscribe' class='method'><code id='subscribe.v'>fn <a href='#tymethod.subscribe' class='fnname'>subscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;meta: Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>, <br>&nbsp;&nbsp;&nbsp;&nbsp;subscriber: Subscriber&lt;<a class="struct" href="https://doc.rust-lang.org/nightly/alloc/string/struct.String.html" title="struct alloc::string::String">String</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;topic: Topic<br>)</code></h3><div class='docblock'><p>Subscribes to a topic.</p>
+<h2 id="params" class="section-header"><a href="#params">Params</a></h2>
+<ul>
+<li><code>topic</code> - Subscription topic (enum: new_tip_header | new_tip_block)</li>
+</ul>
+<h2 id="returns" class="section-header"><a href="#returns">Returns</a></h2>
+<p>This RPC returns the subscription ID as the result. CKB node will push messages in the subscribed
+topics to current RPC connection. The subscript ID is also attached as
+<code>params.subscription</code> in the push messages.</p>
+<h2 id="topics" class="section-header"><a href="#topics">Topics</a></h2><h3 id="new_tip_header" class="section-header"><a href="#new_tip_header"><code>new_tip_header</code></a></h3>
+<p>Whenever there's a block is appended to the canonical chain, CKB node will publish the
+block header to subscribers.</p>
+<p>The schema of the <code>params.result</code> in the notification is the same with the response result
+of <a href="trait.ChainRpc.html#tymethod.get_header">RPC <code>get_header</code></a> when <code>verbosity</code> is 2.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;subscribe&quot;,
+  &quot;params&quot;: {
+    &quot;result&quot;: {
+      &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+      &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+      &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+      &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+      &quot;nonce&quot;: &quot;0x0&quot;,
+      &quot;number&quot;: &quot;0x400&quot;,
+      &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+      &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+      &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+      &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+      &quot;version&quot;: &quot;0x0&quot;
+    },
+    &quot;subscription&quot;: &quot;0x2a&quot;
+  }
+}
+</code></pre>
+<h3 id="new_tip_block" class="section-header"><a href="#new_tip_block"><code>new_tip_block</code></a></h3>
+<p>Whenever there's a block is appended to the canonical chain, CKB node will publish the
+whole block to subscribers.</p>
+<p>The schema of the <code>params.result</code> in the notification is the same with the response result
+of <a href="trait.ChainRpc.html#tymethod.get_block">RPC <code>get_block</code></a> when <code>verbosity</code> is 2.</p>
+<p>Example:</p>
+<pre><code class="language-json">{
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;subscribe&quot;,
+  &quot;params&quot;: {
+    &quot;result&quot;: {
+      &quot;header&quot;: {
+        &quot;compact_target&quot;: &quot;0x1e083126&quot;,
+        &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,
+        &quot;epoch&quot;: &quot;0x7080018000001&quot;,
+        &quot;hash&quot;: &quot;0xa5f5c85987a15de25661e5a214f2c1449cd803f071acc7999820f25246471f40&quot;,
+        &quot;nonce&quot;: &quot;0x0&quot;,
+        &quot;number&quot;: &quot;0x400&quot;,
+        &quot;parent_hash&quot;: &quot;0xae003585fa15309b30b31aed3dcf385e9472c3c3e93746a6c4540629a6a1ed2d&quot;,
+        &quot;proposals_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;timestamp&quot;: &quot;0x5cd2b117&quot;,
+        &quot;transactions_root&quot;: &quot;0xc47d5b78b3c4c4c853e2a32810818940d0ee403423bea9ec7b8e566d9595206c&quot;,
+        &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,
+        &quot;version&quot;: &quot;0x0&quot;
+      },
+      &quot;proposals&quot;: [],
+      &quot;transactions&quot;: [
+        {
+          &quot;cell_deps&quot;: [],
+          &quot;hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;,
+          &quot;header_deps&quot;: [],
+          &quot;inputs&quot;: [
+            {
+              &quot;previous_output&quot;: {
+                &quot;index&quot;: &quot;0xffffffff&quot;,
+                &quot;tx_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;
+              },
+              &quot;since&quot;: &quot;0x400&quot;
+            }
+          ],
+          &quot;outputs&quot;: [
+            {
+              &quot;capacity&quot;: &quot;0x18e64b61cf&quot;,
+              &quot;lock&quot;: {
+                &quot;args&quot;: &quot;0x&quot;,
+                &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,
+                &quot;hash_type&quot;: &quot;data&quot;
+              },
+              &quot;type&quot;: null
+            }
+          ],
+          &quot;outputs_data&quot;: [
+            &quot;0x&quot;
+          ],
+          &quot;version&quot;: &quot;0x0&quot;,
+          &quot;witnesses&quot;: [
+            &quot;0x450000000c000000410000003500000010000000300000003100000028e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5000000000000000000&quot;
+          ]
+        }
+      ],
+      &quot;uncles&quot;: []
+    },
+    &quot;subscription&quot;: &quot;0x2a&quot;
+  }
+}
+</code></pre>
+<h2 id="examples-1" class="section-header"><a href="#examples-1">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;subscribe&quot;,
+  &quot;params&quot;: [
+    &quot;new_tip_header&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: &quot;0x2a&quot;
+}
+</code></pre>
+</div><h3 id='tymethod.unsubscribe' class='method'><code id='unsubscribe.v'>fn <a href='#tymethod.unsubscribe' class='fnname'>unsubscribe</a>(<br>&nbsp;&nbsp;&nbsp;&nbsp;&amp;self, <br>&nbsp;&nbsp;&nbsp;&nbsp;meta: <a class="enum" href="https://doc.rust-lang.org/nightly/core/option/enum.Option.html" title="enum core::option::Option">Option</a>&lt;Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>&gt;, <br>&nbsp;&nbsp;&nbsp;&nbsp;id: SubscriptionId<br>) -&gt; Result&lt;<a class="primitive" href="https://doc.rust-lang.org/nightly/std/primitive.bool.html">bool</a>&gt;</code></h3><div class='docblock'><p>Unsubscribes from a subscribed topic.</p>
+<h2 id="params-1" class="section-header"><a href="#params-1">Params</a></h2>
+<ul>
+<li><code>id</code> - Subscription ID</li>
+</ul>
+<h2 id="examples-2" class="section-header"><a href="#examples-2">Examples</a></h2>
+<p>Request</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;method&quot;: &quot;unsubscribe&quot;,
+  &quot;params&quot;: [
+    &quot;0x2a&quot;
+  ]
+}
+</code></pre>
+<p>Response</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: 42,
+  &quot;jsonrpc&quot;: &quot;2.0&quot;,
+  &quot;result&quot;: true
+}
+</code></pre>
+</div></div><span class='loading-content'>Loading content...</span>
             <h2 id='provided-methods' class='small-section-header'>Provided methods<a href='#provided-methods' class='anchor'></a></h2><div class='methods'><h3 id='method.to_delegate' class='method'><code id='to_delegate.v'>fn <a href='#method.to_delegate' class='fnname'>to_delegate</a>(self) -&gt; IoDelegate&lt;Self, Self::<a class="type" href="../../ckb_rpc/module/trait.SubscriptionRpc.html#associatedtype.Metadata" title="type ckb_rpc::module::SubscriptionRpc::Metadata">Metadata</a>&gt;</code></h3><div class='docblock'><p>Create an <code>IoDelegate</code>, wiring rpc calls to the trait methods.</p>
 </div></div><span class='loading-content'>Loading content...</span>
             <h2 id='implementors' class='small-section-header'>Implementors<a href='#implementors' class='anchor'></a></h2><div class='item-list' id='implementors-list'></div><span class='loading-content'>Loading content...</span><script type="text/javascript" src="../../implementors/ckb_rpc/module/trait.SubscriptionRpc.js" async></script></section><section id="search" class="content hidden"></section><section class="footer"></section><script>window.rootPath = "../../";window.currentCrate = "ckb_rpc";</script><script src="../../main.js"></script><script defer src="../../search-index.js"></script></body></html>
