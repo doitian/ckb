@@ -143,6 +143,8 @@
 <span id="143">143</span>
 <span id="144">144</span>
 <span id="145">145</span>
+<span id="146">146</span>
+<span id="147">147</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="doccomment">//! CKB RPC modules</span>
 <span class="doccomment">//!</span>
@@ -184,6 +186,8 @@
 <span class="doccomment">//! * `tx: Transaction` - The first param in the request params list which name is `tx` and type is `Transaction`. The type links to the JSON object definition of a CKB transaction.</span>
 <span class="doccomment">//! * `outputs_validator: Option&lt;OutputsValidator&gt;` - The second param. The `Option` shows that this argument is optional. The document for `OutputsValidator` shows that `outputs_validator` is an enum type which possible values include &quot;default&quot; and &quot;passthrough&quot;.</span>
 <span class="doccomment">//! * `-&gt; Result&lt;H256&gt;` - The type inside the `Result` after `-&gt;` is the response type. In this example, it is `H256` which is a 32-bytes binary encoded as a hex string.</span>
+<span class="doccomment">//!</span>
+<span class="doccomment">//! The RPC errors are documented in [`RPCError`](../enum.RPCError.html).</span>
 <span class="doccomment">//!</span>
 <span class="doccomment">//! ## JSONRPC Deprecation Process</span>
 <span class="doccomment">//!</span>

@@ -112,6 +112,12 @@
 <span id="112">112</span>
 <span id="113">113</span>
 <span id="114">114</span>
+<span id="115">115</span>
+<span id="116">116</span>
+<span id="117">117</span>
+<span id="118">118</span>
+<span id="119">119</span>
+<span id="120">120</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="ident">ckb_jsonrpc_types</span>::<span class="ident">Alert</span>;
@@ -135,6 +141,12 @@
     <span class="doccomment">/// Sends an alert.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// This RPC returns `null` on success.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`AlertFailedToVerifySignatures (-1000)`](../enum.RPCError.html#variant.AlertFailedToVerifySignatures) - Some signatures in the request are invalid.</span>
+    <span class="doccomment">/// * [`P2PFailedToBroadcast (-101)`](../enum.RPCError.html#variant.P2PFailedToBroadcast) - Alert is saved locally but has failed to broadcast to the P2P network.</span>
+    <span class="doccomment">/// * `InvalidParams (-32602)` - The time specified in `alert.notice_until` must be in the future.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>

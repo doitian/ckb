@@ -367,6 +367,16 @@
 <span id="367">367</span>
 <span id="368">368</span>
 <span id="369">369</span>
+<span id="370">370</span>
+<span id="371">371</span>
+<span id="372">372</span>
+<span id="373">373</span>
+<span id="374">374</span>
+<span id="375">375</span>
+<span id="376">376</span>
+<span id="377">377</span>
+<span id="378">378</span>
+<span id="379">379</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="ident">ckb_dao</span>::<span class="ident">DaoCalculator</span>;
@@ -508,6 +518,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// It is used to debug transaction scripts and query how many cycles the scripts consume.</span>
     <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`TransactionFailedToResolve (-301)`](../enum.RPCError.html#variant.TransactionFailedToResolve) - Failed to resolve the referenced cells and headers used in the transaction, as inputs or dependencies.</span>
+    <span class="doccomment">/// * [`TransactionFailedToVerify (-302)`](../enum.RPCError.html#variant.TransactionFailedToVerify) - There is a script returns with an error.</span>
+    <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// Request</span>
@@ -592,6 +607,11 @@
     <span class="doccomment">/// In CKB, scripts cannot get the information about in which block the transaction is</span>
     <span class="doccomment">/// committed. A workaround is letting the transaction reference a block hash so the script</span>
     <span class="doccomment">/// knows that the transaction is committed at least after the reference block.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`DaoError (-5)`](../enum.RPCError.html#variant.DaoError) - The given out point is not a valid cell for DAO computation.</span>
+    <span class="doccomment">/// * [`CKBInternalError (-1)`](../enum.RPCError.html#variant.CKBInternalError) - Mathematics overflow.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>

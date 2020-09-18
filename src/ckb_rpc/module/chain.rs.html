@@ -1420,6 +1420,20 @@
 <span id="1420">1420</span>
 <span id="1421">1421</span>
 <span id="1422">1422</span>
+<span id="1423">1423</span>
+<span id="1424">1424</span>
+<span id="1425">1425</span>
+<span id="1426">1426</span>
+<span id="1427">1427</span>
+<span id="1428">1428</span>
+<span id="1429">1429</span>
+<span id="1430">1430</span>
+<span id="1431">1431</span>
+<span id="1432">1432</span>
+<span id="1433">1433</span>
+<span id="1434">1434</span>
+<span id="1435">1435</span>
+<span id="1436">1436</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="ident">ckb_jsonrpc_types</span>::{
@@ -1603,6 +1617,11 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When `verbosity` is 0, it returns a 0x-prefixed hex string as the `result`. The string</span>
     <span class="doccomment">/// encodes the block serialized by molecule using schema `table Block`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`ChainIndexIsInconsistent (-201)`](../enum.RPCError.html#variant.ChainIndexIsInconsistent) - The index is inconsistent. It says a block hash is in the main chain, but cannot read it from database.</span>
+    <span class="doccomment">/// * [`DatabaseIsCorrupt (-202)`](../enum.RPCError.html#variant.DatabaseIsCorrupt) - The data read from database is dirty. Please report it as a bug.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>
@@ -1796,6 +1815,10 @@
     <span class="doccomment">///</span>
     <span class="doccomment">/// When `verbosity` is 0, it returns a 0x-prefixed hex string as the `result`. The string</span>
     <span class="doccomment">/// encodes the block header serialized by molecule using schema `table Header`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`ChainIndexIsInconsistent (-201)`](../enum.RPCError.html#variant.ChainIndexIsInconsistent) - The index is inconsistent. It says a block hash is in the main chain, but cannot read it from database.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>
@@ -2063,6 +2086,11 @@
     <span class="doccomment">/// * `from` - Start block number</span>
     <span class="doccomment">/// * `to` - End block number. This RPC restricts that `to` is greater than `from` and `to</span>
     <span class="doccomment">/// - from &lt; 100`.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * `InvalidParams (-32602)` - Expected parameters that `from &lt;= to` and `to - from &lt;= 100`.</span>
+    <span class="doccomment">/// * [`ChainIndexIsInconsistent (-201)`](../enum.RPCError.html#variant.ChainIndexIsInconsistent) - The index is inconsistent. It says a block hash is in the main chain, but cannot read it from database.</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>

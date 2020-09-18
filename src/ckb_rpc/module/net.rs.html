@@ -698,6 +698,12 @@
 <span id="698">698</span>
 <span id="699">699</span>
 <span id="700">700</span>
+<span id="701">701</span>
+<span id="702">702</span>
+<span id="703">703</span>
+<span id="704">704</span>
+<span id="705">705</span>
+<span id="706">706</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">error</span>::<span class="ident">RPCError</span>;
 <span class="kw">use</span> <span class="ident">ckb_jsonrpc_types</span>::{
@@ -966,6 +972,12 @@
     <span class="doccomment">/// * `ban_time` - Time in milliseconds how long (or until when if [absolute] is set) the IP is banned, optional parameter, null means using the default time of 24h</span>
     <span class="doccomment">/// * `absolute` - If set, the `ban_time` must be an absolute timestamp in milliseconds since epoch, optional parameter.</span>
     <span class="doccomment">/// * `reason` - Ban reason, optional parameter.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ## Errors</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// * [`InvalidParams (-32602)`](../enum.RPCError.html#variant.InvalidParams)</span>
+    <span class="doccomment">///     * Expected `address` to be a valid IP address with an optional netmask.</span>
+    <span class="doccomment">///     * Expected `command` to be in the list [insert, delete].</span>
     <span class="doccomment">///</span>
     <span class="doccomment">/// ## Examples</span>
     <span class="doccomment">///</span>

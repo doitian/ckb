@@ -221,42 +221,190 @@
 <span id="221">221</span>
 <span id="222">222</span>
 <span id="223">223</span>
+<span id="224">224</span>
+<span id="225">225</span>
+<span id="226">226</span>
+<span id="227">227</span>
+<span id="228">228</span>
+<span id="229">229</span>
+<span id="230">230</span>
+<span id="231">231</span>
+<span id="232">232</span>
+<span id="233">233</span>
+<span id="234">234</span>
+<span id="235">235</span>
+<span id="236">236</span>
+<span id="237">237</span>
+<span id="238">238</span>
+<span id="239">239</span>
+<span id="240">240</span>
+<span id="241">241</span>
+<span id="242">242</span>
+<span id="243">243</span>
+<span id="244">244</span>
+<span id="245">245</span>
+<span id="246">246</span>
+<span id="247">247</span>
+<span id="248">248</span>
+<span id="249">249</span>
+<span id="250">250</span>
+<span id="251">251</span>
+<span id="252">252</span>
+<span id="253">253</span>
+<span id="254">254</span>
+<span id="255">255</span>
+<span id="256">256</span>
+<span id="257">257</span>
+<span id="258">258</span>
+<span id="259">259</span>
+<span id="260">260</span>
+<span id="261">261</span>
+<span id="262">262</span>
+<span id="263">263</span>
+<span id="264">264</span>
+<span id="265">265</span>
+<span id="266">266</span>
+<span id="267">267</span>
+<span id="268">268</span>
+<span id="269">269</span>
+<span id="270">270</span>
+<span id="271">271</span>
+<span id="272">272</span>
+<span id="273">273</span>
+<span id="274">274</span>
+<span id="275">275</span>
+<span id="276">276</span>
+<span id="277">277</span>
+<span id="278">278</span>
+<span id="279">279</span>
+<span id="280">280</span>
+<span id="281">281</span>
+<span id="282">282</span>
+<span id="283">283</span>
+<span id="284">284</span>
+<span id="285">285</span>
+<span id="286">286</span>
+<span id="287">287</span>
+<span id="288">288</span>
+<span id="289">289</span>
+<span id="290">290</span>
+<span id="291">291</span>
+<span id="292">292</span>
+<span id="293">293</span>
+<span id="294">294</span>
+<span id="295">295</span>
+<span id="296">296</span>
+<span id="297">297</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="ident">ckb_error</span>::{<span class="ident">Error</span> <span class="kw">as</span> <span class="ident">CKBError</span>, <span class="ident">ErrorKind</span>, <span class="ident">InternalError</span>, <span class="ident">InternalErrorKind</span>};
 <span class="kw">use</span> <span class="ident">ckb_tx_pool</span>::<span class="ident">error</span>::<span class="ident">Reject</span>;
 <span class="kw">use</span> <span class="ident">jsonrpc_core</span>::{<span class="ident">Error</span>, <span class="ident">ErrorCode</span>, <span class="ident">Value</span>};
 <span class="kw">use</span> <span class="ident">std</span>::<span class="ident">fmt</span>::{<span class="ident">Debug</span>, <span class="ident">Display</span>};
 
-<span class="comment">// * -1 ~ -999 General errors</span>
-<span class="comment">// * -1000 ~ -2999 Module specific errors</span>
+<span class="doccomment">/// CKB RPC error codes.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// CKB RPC follows the JSON RPC specification about the [error object](https://www.jsonrpc.org/specification#error_object).</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Besides the pre-defined errors, all CKB defined errors are listed here.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Here is a reference to the pre-defined errors:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// | code             | message          | meaning                                            |</span>
+<span class="doccomment">/// | ---------------- | ---------------- | -------------------------------------------------- |</span>
+<span class="doccomment">/// | -32700           | Parse error      | Invalid JSON was received by the server.           |</span>
+<span class="doccomment">/// | -32600           | Invalid Request  | The JSON sent is not a valid Request object.       |</span>
+<span class="doccomment">/// | -32601           | Method not found | The method does not exist / is not available.      |</span>
+<span class="doccomment">/// | -32602           | Invalid params   | Invalid method parameter(s).                       |</span>
+<span class="doccomment">/// | -32603           | Internal error   | Internal JSON-RPC error.                           |</span>
+<span class="doccomment">/// | -32000 to -32099 | Server error     | Reserved for implementation-defined server-errors. |</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// CKB application defined errors follow some patterns to assign the codes:</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// * -1 ~ -999 are general errors</span>
+<span class="doccomment">/// * -1000 ~ -2999 are module specific errors. Each module generally gets 100 reserved error</span>
+<span class="doccomment">/// codes.</span>
+<span class="doccomment">///</span>
+<span class="doccomment">/// Unless otherwise noted, all the errors returns optional detailed information in the error</span>
+<span class="doccomment">/// object `data` field.</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">PartialEq</span>, <span class="ident">Clone</span>, <span class="ident">Copy</span>)]</span>
 <span class="kw">pub</span> <span class="kw">enum</span> <span class="ident">RPCError</span> {
-    <span class="comment">// ,-- General application errors</span>
+    <span class="doccomment">/// (-1): CKB internal errors which are considered to never happen or only happen when the system</span>
+    <span class="doccomment">/// resources are exhausted.</span>
     <span class="ident">CKBInternalError</span> <span class="op">=</span> <span class="op">-</span><span class="number">1</span>,
+    <span class="doccomment">/// (-2): The CKB method has been deprecated and disabled.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Set `rpc.enable_deprecated_rpc` to `true` in the config file to enable all deprecated</span>
+    <span class="doccomment">/// methods.</span>
     <span class="ident">Deprecated</span> <span class="op">=</span> <span class="op">-</span><span class="number">2</span>,
+    <span class="doccomment">/// (-3): Error code -3 is no longer used.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Prior to v0.35.0, CKB returns all RPC errors using the error code -3. CKB no longer uses</span>
+    <span class="doccomment">/// -3 since v0.35.0.</span>
     <span class="ident">Invalid</span> <span class="op">=</span> <span class="op">-</span><span class="number">3</span>,
+    <span class="doccomment">/// (-4): The RPC method is not enabled.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// CKB groups RPC methods into modules, and a method is enabled only when the module is</span>
+    <span class="doccomment">/// explicitly enabled in the config file.</span>
     <span class="ident">RPCModuleIsDisabled</span> <span class="op">=</span> <span class="op">-</span><span class="number">4</span>,
+    <span class="doccomment">/// (-5): DAO related errors.</span>
     <span class="ident">DaoError</span> <span class="op">=</span> <span class="op">-</span><span class="number">5</span>,
+    <span class="doccomment">/// (-6): Integer operation overflow.</span>
     <span class="ident">IntegerOverflow</span> <span class="op">=</span> <span class="op">-</span><span class="number">6</span>,
+    <span class="doccomment">/// (-7): The erorr is caused by a config file option.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// User has to edit the config file to fix the error.</span>
     <span class="ident">ConfigError</span> <span class="op">=</span> <span class="op">-</span><span class="number">7</span>,
-    <span class="comment">// ,-- P2P errors</span>
+    <span class="doccomment">/// (-101): The CKB local node failed to broadcast a message to its peers.</span>
     <span class="ident">P2PFailedToBroadcast</span> <span class="op">=</span> <span class="op">-</span><span class="number">101</span>,
-    <span class="comment">// ,-- Store errors</span>
+    <span class="doccomment">/// (-200): Internal database error.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The CKB node persists data to the database. This is the error from the underlying database</span>
+    <span class="doccomment">/// module.</span>
     <span class="ident">DatabaseError</span> <span class="op">=</span> <span class="op">-</span><span class="number">200</span>,
+    <span class="doccomment">/// (-201): The chain index is inconsistent.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// An example of inconsistent index is that the chain index says a block hash is in the chain</span>
+    <span class="doccomment">/// but the block cannot be read from the database.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is a fatal error usually due to a serious bug. Please back up the data directory and</span>
+    <span class="doccomment">/// re-sync the chain from scratch.</span>
     <span class="ident">ChainIndexIsInconsistent</span> <span class="op">=</span> <span class="op">-</span><span class="number">201</span>,
+    <span class="doccomment">/// (-202): The underlying database is corrupt.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// This is a fatal error usually caused by the underlying database used by CKB. Please back up</span>
+    <span class="doccomment">/// the data directory and re-sync the chain from scratch.</span>
     <span class="ident">DatabaseIsCorrupt</span> <span class="op">=</span> <span class="op">-</span><span class="number">202</span>,
-    <span class="comment">// ,-- Transaction errors</span>
+    <span class="doccomment">/// (-301): Failed to resolve the referenced cells and headers used in the transaction, as inputs or</span>
+    <span class="doccomment">/// dependencies.</span>
     <span class="ident">TransactionFailedToResolve</span> <span class="op">=</span> <span class="op">-</span><span class="number">301</span>,
+    <span class="doccomment">/// (-302): Failed to verify the transaction.</span>
     <span class="ident">TransactionFailedToVerify</span> <span class="op">=</span> <span class="op">-</span><span class="number">302</span>,
-    <span class="comment">// ,-- Alert module</span>
+    <span class="doccomment">/// (-1000): Some signatures in the submit alert are invalid.</span>
     <span class="ident">AlertFailedToVerifySignatures</span> <span class="op">=</span> <span class="op">-</span><span class="number">1000</span>,
-    <span class="comment">// ,-- Pool module</span>
+    <span class="doccomment">/// (-1102): The transaction is rejected by the outputs validator specified by the RPC parameter.</span>
     <span class="ident">PoolRejectedTransactionByOutputsValidator</span> <span class="op">=</span> <span class="op">-</span><span class="number">1102</span>,
+    <span class="doccomment">/// (-1103): Pool rejects some transactions which seem contain invalid VM instructions. See the issue</span>
+    <span class="doccomment">/// link in the error message for details.</span>
     <span class="ident">PoolRejectedTransactionByIllTransactionChecker</span> <span class="op">=</span> <span class="op">-</span><span class="number">1103</span>,
+    <span class="doccomment">/// (-1104): The transaction fee rate must &gt;= config option `tx_pool.min_fee_rate`</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// The fee rate is calculated as:</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// ```text</span>
+    <span class="doccomment">/// fee / (1000 * tx_serialization_size_in_block_in_bytes)</span>
+    <span class="doccomment">/// ```</span>
     <span class="ident">PoolRejectedTransactionByMinFeeRate</span> <span class="op">=</span> <span class="op">-</span><span class="number">1104</span>,
+    <span class="doccomment">/// (-1105): The in-pool ancestors count must &lt;= config option `tx_pool.max_ancestors_count`</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// Pool rejects a large package of chained transactions to avoid certain kinds of DoS attacks.</span>
     <span class="ident">PoolRejectedTransactionByMaxAncestorsCountLimit</span> <span class="op">=</span> <span class="op">-</span><span class="number">1105</span>,
+    <span class="doccomment">/// (-1106): The transaction is rejected because the pool has reached its limit.</span>
     <span class="ident">PoolIsFull</span> <span class="op">=</span> <span class="op">-</span><span class="number">1106</span>,
+    <span class="doccomment">/// (-1107): The transaction is already in the pool.</span>
     <span class="ident">PoolRejectedDuplicatedTransaction</span> <span class="op">=</span> <span class="op">-</span><span class="number">1107</span>,
+    <span class="doccomment">/// (-1108): The transaction is rejected because it does not make sense in the context.</span>
+    <span class="doccomment">///</span>
+    <span class="doccomment">/// For example, a cellbase transaction is not allowed in `send_transaction` RPC.</span>
     <span class="ident">PoolRejectedMalformedTransaction</span> <span class="op">=</span> <span class="op">-</span><span class="number">1108</span>,
 }
 

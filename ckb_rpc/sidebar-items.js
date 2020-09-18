@@ -1,1 +1,1 @@
-initSidebarItems({"enum":[["RPCError",""]],"mod":[["module","CKB RPC modules"]]});
+initSidebarItems({"enum":[["RPCError","CKB RPC error codes."]],"mod":[["module","CKB RPC modules"]]});
