@@ -1201,6 +1201,24 @@
 <span id="1201">1201</span>
 <span id="1202">1202</span>
 <span id="1203">1203</span>
+<span id="1204">1204</span>
+<span id="1205">1205</span>
+<span id="1206">1206</span>
+<span id="1207">1207</span>
+<span id="1208">1208</span>
+<span id="1209">1209</span>
+<span id="1210">1210</span>
+<span id="1211">1211</span>
+<span id="1212">1212</span>
+<span id="1213">1213</span>
+<span id="1214">1214</span>
+<span id="1215">1215</span>
+<span id="1216">1216</span>
+<span id="1217">1217</span>
+<span id="1218">1218</span>
+<span id="1219">1219</span>
+<span id="1220">1220</span>
+<span id="1221">1221</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::<span class="ident">bytes</span>::<span class="ident">JsonBytes</span>;
 <span class="kw">use</span> <span class="kw">crate</span>::{
@@ -1265,12 +1283,14 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::Script&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;args&quot;: &quot;0x&quot;,</span>
 <span class="doccomment">///   &quot;code_hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;,</span>
 <span class="doccomment">///   &quot;hash_type&quot;: &quot;data&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
@@ -1315,7 +1335,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellOutput&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;capacity&quot;: &quot;0x2540be400&quot;,</span>
 <span class="doccomment">///   &quot;lock&quot;: {</span>
@@ -1325,6 +1346,7 @@
 <span class="doccomment">///   },</span>
 <span class="doccomment">///   &quot;type&quot;: null</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
@@ -1378,11 +1400,13 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::OutPoint&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;index&quot;: &quot;0x0&quot;,</span>
 <span class="doccomment">///   &quot;tx_hash&quot;: &quot;0x365698b50ca0da75dca2c87f9e7b563811d3b5813736b8cc62cc3b106faceb17&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
@@ -1418,7 +1442,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellInput&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;previous_output&quot;: {</span>
 <span class="doccomment">///     &quot;index&quot;: &quot;0x0&quot;,</span>
@@ -1426,6 +1451,7 @@
 <span class="doccomment">///   },</span>
 <span class="doccomment">///   &quot;since&quot;: &quot;0x0&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
@@ -1506,7 +1532,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellDep&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;dep_type&quot;: &quot;code&quot;,</span>
 <span class="doccomment">///   &quot;out_point&quot;: {</span>
@@ -1514,6 +1541,7 @@
 <span class="doccomment">///     &quot;tx_hash&quot;: &quot;0xa4037a893eb48e18ed4ef61034ce26eba9c585f15c9cee102ae58505565eccc3&quot;</span>
 <span class="doccomment">///   }</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="attribute">#[<span class="ident">serde</span>(<span class="ident">deny_unknown_fields</span>)]</span>
@@ -1597,7 +1625,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::TransactionView&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;cell_deps&quot;: [</span>
 <span class="doccomment">///     {</span>
@@ -1638,6 +1667,7 @@
 <span class="doccomment">///   &quot;version&quot;: &quot;0x0&quot;,</span>
 <span class="doccomment">///   &quot;witnesses&quot;: []</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">TransactionView</span> {
@@ -1842,7 +1872,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::HeaderView&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;compact_target&quot;: &quot;0x1e083126&quot;,</span>
 <span class="doccomment">///   &quot;dao&quot;: &quot;0xb5a3e047474401001bc476b9ee573000c0c387962a38000000febffacf030000&quot;,</span>
@@ -1857,6 +1888,7 @@
 <span class="doccomment">///   &quot;uncles_hash&quot;: &quot;0x0000000000000000000000000000000000000000000000000000000000000000&quot;,</span>
 <span class="doccomment">///   &quot;version&quot;: &quot;0x0&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">HeaderView</span> {
@@ -2143,11 +2175,15 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
-<span class="doccomment">/// &quot;compact_target&quot;: &quot;0x1e083126&quot;,</span>
-<span class="doccomment">/// &quot;length&quot;: &quot;0x708&quot;,</span>
-<span class="doccomment">/// &quot;number&quot;: &quot;0x1&quot;,</span>
-<span class="doccomment">/// &quot;start_number&quot;: &quot;0x3e8&quot;</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::EpochView&gt;(r#&quot;</span>
+<span class="doccomment">/// {</span>
+<span class="doccomment">///   &quot;compact_target&quot;: &quot;0x1e083126&quot;,</span>
+<span class="doccomment">///   &quot;length&quot;: &quot;0x708&quot;,</span>
+<span class="doccomment">///   &quot;number&quot;: &quot;0x1&quot;,</span>
+<span class="doccomment">///   &quot;start_number&quot;: &quot;0x3e8&quot;</span>
+<span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">EpochView</span> {

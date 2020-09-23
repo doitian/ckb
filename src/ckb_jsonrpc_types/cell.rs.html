@@ -187,6 +187,16 @@
 <span id="187">187</span>
 <span id="188">188</span>
 <span id="189">189</span>
+<span id="190">190</span>
+<span id="191">191</span>
+<span id="192">192</span>
+<span id="193">193</span>
+<span id="194">194</span>
+<span id="195">195</span>
+<span id="196">196</span>
+<span id="197">197</span>
+<span id="198">198</span>
+<span id="199">199</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">Capacity</span>, <span class="ident">CellOutput</span>, <span class="ident">JsonBytes</span>, <span class="ident">OutPoint</span>, <span class="ident">Script</span>, <span class="ident">Uint64</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::{
@@ -204,6 +214,7 @@
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
 <span class="doccomment">/// ```json</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellOutputWithOutPoint&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;block_hash&quot;: &quot;0xf293d02ce5e101b160912aaf15b1b87517b7a6d572c13af9ae4101c1143b22ad&quot;,</span>
 <span class="doccomment">///   &quot;capacity&quot;: &quot;0x2ca86f2642&quot;,</span>
@@ -220,6 +231,7 @@
 <span class="doccomment">///   &quot;output_data_len&quot;: &quot;0x0&quot;,</span>
 <span class="doccomment">///   &quot;type&quot;: null</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CellOutputWithOutPoint</span> {
@@ -255,7 +267,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellWithStatus&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;cell&quot;: {</span>
 <span class="doccomment">///     &quot;data&quot;: {</span>
@@ -274,13 +287,16 @@
 <span class="doccomment">///   },</span>
 <span class="doccomment">///   &quot;status&quot;: &quot;live&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellWithStatus&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;cell&quot;: null,</span>
 <span class="doccomment">///   &quot;status&quot;: &quot;unknown&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CellWithStatus</span> {
@@ -307,7 +323,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellInfo&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;data&quot;: {</span>
 <span class="doccomment">///     &quot;content&quot;: &quot;0x7f454c460201010000000000000000000200f3000100000078000100000000004000000000000000980000000000000005000000400038000100400003000200010000000500000000000000000000000000010000000000000001000000000082000000000000008200000000000000001000000000000001459308d00573000000002e7368737472746162002e74657874000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000000010000000600000000000000780001000000000078000000000000000a0000000000000000000000000000000200000000000000000000000000000001000000030000000000000000000000000000000000000082000000000000001100000000000000000000000000000001000000000000000000000000000000&quot;,</span>
@@ -323,6 +340,7 @@
 <span class="doccomment">///     &quot;type&quot;: null</span>
 <span class="doccomment">///   }</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CellInfo</span> {
@@ -338,11 +356,13 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// ## Examples</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::CellData&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;content&quot;: &quot;0x7f454c460201010000000000000000000200f3000100000078000100000000004000000000000000980000000000000005000000400038000100400003000200010000000500000000000000000000000000010000000000000001000000000082000000000000008200000000000000001000000000000001459308d00573000000002e7368737472746162002e74657874000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000b000000010000000600000000000000780001000000000078000000000000000a0000000000000000000000000000000200000000000000000000000000000001000000030000000000000000000000000000000000000082000000000000001100000000000000000000000000000001000000000000000000000000000000&quot;,</span>
 <span class="doccomment">///   &quot;hash&quot;: &quot;0x28e83a1277d48add8e72fadaa9248559e1b632bab2bd60b27955ebc4c03800a5&quot;</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Debug</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">CellData</span> {

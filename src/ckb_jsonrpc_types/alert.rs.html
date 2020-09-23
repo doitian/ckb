@@ -132,6 +132,8 @@
 <span id="132">132</span>
 <span id="133">133</span>
 <span id="134">134</span>
+<span id="135">135</span>
+<span id="136">136</span>
 </pre><div class="example-wrap"><pre class="rust ">
 <span class="kw">use</span> <span class="kw">crate</span>::{<span class="ident">bytes</span>::<span class="ident">JsonBytes</span>, <span class="ident">Timestamp</span>, <span class="ident">Uint32</span>};
 <span class="kw">use</span> <span class="ident">ckb_types</span>::{<span class="ident">packed</span>, <span class="ident">prelude</span>::<span class="kw-2">*</span>};
@@ -152,7 +154,8 @@
 <span class="doccomment">///</span>
 <span class="doccomment">/// An example in JSON</span>
 <span class="doccomment">///</span>
-<span class="doccomment">/// ```json</span>
+<span class="doccomment">/// ```</span>
+<span class="doccomment">/// # serde_json::from_str::&lt;ckb_jsonrpc_types::Alert&gt;(r#&quot;</span>
 <span class="doccomment">/// {</span>
 <span class="doccomment">///   &quot;id&quot;: &quot;0x1&quot;,</span>
 <span class="doccomment">///   &quot;cancel&quot;: &quot;0x0&quot;,</span>
@@ -166,6 +169,7 @@
 <span class="doccomment">///     &quot;0x0242ef40bb64fe3189284de91f981b17f4d740c5e24a3fc9b70059db6aa1d198a2e76da4f84ab37549880d116860976e0cf81cd039563c452412076ebffa2e4453&quot;</span>
 <span class="doccomment">///   ]</span>
 <span class="doccomment">/// }</span>
+<span class="doccomment">/// # &quot;#).unwrap();</span>
 <span class="doccomment">/// ```</span>
 <span class="attribute">#[<span class="ident">derive</span>(<span class="ident">Clone</span>, <span class="ident">Default</span>, <span class="ident">Serialize</span>, <span class="ident">Deserialize</span>, <span class="ident">PartialEq</span>, <span class="ident">Eq</span>, <span class="ident">Hash</span>, <span class="ident">Debug</span>)]</span>
 <span class="kw">pub</span> <span class="kw">struct</span> <span class="ident">Alert</span> {
