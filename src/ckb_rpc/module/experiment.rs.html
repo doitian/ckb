@@ -653,7 +653,7 @@
         <span class="ident">since</span> <span class="op">=</span> <span class="string">&quot;0.34.0&quot;</span>,
         <span class="ident">note</span> <span class="op">=</span> <span class="string">&quot;This method is deprecated because of the performance issue. It always returns an error now.&quot;</span>
     )]</span>
-    <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;estimate_fee_rate&quot;</span>)]</span>
+    <span class="attribute">#[<span class="ident">rpc</span>(<span class="ident">name</span> <span class="op">=</span> <span class="string">&quot;estimate_fee_rate&quot;</span>)]</span> <span class="comment">// noexample</span>
     <span class="kw">fn</span> <span class="ident">estimate_fee_rate</span>(<span class="kw-2">&amp;</span><span class="self">self</span>, <span class="ident">expect_confirm_blocks</span>: <span class="ident">Uint64</span>) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">EstimateResult</span><span class="op">&gt;</span>;
 }
 
