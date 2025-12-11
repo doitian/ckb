@@ -1,0 +1,14 @@
+[tasks.pre-commit]
+depends = ["pre-commit:*"]
+
+[tasks."pre-commit:cargo-fmt"]
+run = "cargo fmt --check"
+
+[tasks.test]
+run = "cargo test --no-fail-fast -- --nocapture {{vars.cargo_test_args}}"
+
+[vars]
+cargo_test_args = ""
+
+[env]
+GITHUB_TOKEN = "{{ exec(command='gh auth token') }}"
