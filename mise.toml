@@ -12,3 +12,4 @@ cargo_test_args = ""
 
 [env]
 GITHUB_TOKEN = "{{ exec(command='gh auth token') }}"
+CXXFLAGS = "--include cstdint"
