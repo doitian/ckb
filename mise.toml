@@ -4,16 +4,9 @@ depends = ["pre-commit:*"]
 [tasks."pre-commit:cargo-fmt"]
 run = "cargo fmt --check"
 
-[tasks.test]
-run = "cargo test --no-fail-fast --{% for f in usage.filters | default(value=[]) %} {{ f }}{% endfor %}"
-usage = 'arg "[filters]" var=#true'
-
 [tasks."pre-commit:typos"]
 run = "typos"
 
-[vars]
-cargo_test_args = ""
-
-[env.GITHUB_TOKEN]
-value = "{{ exec(command='gh auth token') }}"
-redact = true
+[tasks.test]
+run = "cargo test --no-fail-fast --{% for f in usage.filters | default(value=[]) %} {{ f }}{% endfor %}"
+usage = 'arg "[filters]" var=#true'
