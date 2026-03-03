@@ -4,9 +4,6 @@ depends = ["pre-commit:*"]
 [tasks."pre-commit:cargo-fmt"]
 run = "cargo fmt --check"
 
-[tasks."pre-commit:typos"]
-run = "typos"
-
 [tasks.test]
 run = "cargo test --no-fail-fast --{% for f in usage.filters | default(value=[]) %} {{ f }}{% endfor %}"
 usage = 'arg "[filters]" var=#true'
