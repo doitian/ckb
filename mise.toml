@@ -7,3 +7,6 @@ run = "cargo fmt --check"
 [tasks.test]
 run = "cargo test --no-fail-fast --{% for f in usage.filters | default(value=[]) %} {{ f }}{% endfor %}"
 usage = 'arg "[filters]" var=#true'
+
+[tasks."release:push-tag"]
+run = "devtools/release/release-pkg.sh push-pkg"
